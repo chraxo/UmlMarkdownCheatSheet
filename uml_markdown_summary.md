@@ -10,13 +10,11 @@
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
     - [Usage](#usage)
-      - [Inheritance ("arrow syntax")](#inheritance-arrow-syntax)
+      - [Inheritance](#inheritance)
       - [Realization (Interface inheritance)](#realization-interface-inheritance)
       - [Association](#association)
-      - [Association with *association class*](#association-with-association-class)
       - [Composition](#composition)
       - [Aggregation](#aggregation)
-      - [Komposition](#komposition)
     - [Activity Diagram (Flow Chart)](#activity-diagram-flow-chart)
       - [Connector & Detach](#connector--detach)
       - [Grouping (partitions)](#grouping-partitions)
@@ -68,6 +66,8 @@ Class1 <|-- Class2 : Inheritance
 @enduml
 
 ### Formatting
+
+* See also [https://plantuml.com/de/creole](https://plantuml.com/de/creole)
 
 @startuml
 
@@ -163,144 +163,144 @@ end note
 * [Class Diagram (Wikipedia)](https://en.wikipedia.org/wiki/Class_diagram)
 
 @startuml
-title Class Diagram: General Syntax
-left to right direction
+    title Class Diagram: General Syntax
+    
+    ' optional switch to set the diagram orientation:
+    left to right direction
 
-class "class2" as c2
-class1 "line start" -- "line end" c2 : line middle
+    ' optional:
+    hide empty members
+
+    ' "as" sets an alias name, here "c2" for "class2"
+    class "class2" as c2
+
+    class1 "line start" -- "line end" c2 : line middle
 @enduml
 
 ```{.md}
-' optional switch to set the diagram orientation:
-left to right direction
+    ' optional switch to set the diagram orientation:
+    left to right direction
 
-' "as" sets an alias name, here "c2" for "class2"
-class "class2" as c2
+    ' optional:
+    hide empty members
 
-class1 "line start" -- "line end" c2 : line middle
+    ' "as" sets an alias name, here "c2" for "class2"
+    class "class2" as c2
+    
+    class1 "line start" -- "line end" c2 : line middle
 ```
 
-#### Inheritance ("arrow syntax")
-
-```{.md}
-class1 <|-- class2
-```
+#### Inheritance
 
 @startuml
-left to right direction
-class1 <|-- class2
-note right 
-    class2 extends class 1
-    (or: class 2 inherits from class1)
-end note
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
+
+    class1 <|-- class2
+
+    note right of class2
+        plantUML: 
+           class1 <|-- class2
+        or:
+           class class2 extends class1
+    end note
 @enduml
 
-#### Inheritance ("extends" syntax)
-
-```{.md}
-class class2 extends class1
-```
-
-@startuml
-left to right direction
-class class2 extends class1
-@enduml
+* "class 2 inherits from class1"
+* or: "class2 extends class 1"
 
 #### Realization (Interface inheritance)
 
-```{.md}
-interface1 <|.. class2
-```
-
 @startuml
-left to right direction
-interface1 <|.. class2
-note right 
-    class2 realizes (implements 
-    / "inherits from") interface1
-end note
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
+
+    interface interface1
+    interface1 <|.. class2
+
+    note right 
+        plantUML:
+           interface interface1
+           interface1 <|.. class2
+        or:
+           class class1 implements interface1
+    end note
 @enduml
 
-#### Realization (2)
-
-```{.md}
-class class2 implements interface1
-```
-
-@startuml
-left to right direction
-class class2 implements interface1
-@enduml
+* "class2 implements interface1"
+* or: "class2 realizes interface1"
+* or: "class2 inherits from interface1"
 
 #### Association
 
-```
-class1 "1" -- "*" class2
-```
-
 @startuml
-left to right direction
-class1 "1" -- "*" class2
-note right 
-    class1 and class 2 are associated
-end note
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
+
+    title Association
+
+    class1 "1" -- "*" class2
+
+    note right 
+        plantUML:
+           class1 "1" -- "*" class2
+    end note
 @enduml
 
-#### Association with *association class*
-
-```
-class1 "1" -- "*" class2
-(class1, class2) .. "AssociationClass"
-```
+* "class1 and class 2 are associated"
 
 @startuml
-class1 "1" -- "*" class2
-(class1, class2) .. "AssociationClass"
-@enduml
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
 
+    title Association with *association class*
 
-```
-class1 "1" -- "*" class2
-(class1, class2) . "AssociationClass"
-```
-
-@startuml
-class1 "1" -- "*" class2
-(class1, class2) . "AssociationClass"
+    class1 "1" -- "*" class2
+    (class1, class2) .. "AssociationClass"
+        
+    note right of class2
+        plantUML:
+           class1 "1" -- "*" class2
+           (class1, class2) .. "AssociationClass"
+    end note
 @enduml
 
 #### Composition
 @startuml
-left to right direction
-class1 *-- class2
-note right 
-    Composition
-end note
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
+    
+    class1 *-- class2 : Composition
+
+    note right
+        class2 can *not* exist without class1.
+        plantUML:
+           class1 *-- class2 : Composition
+    end note
 @enduml
 
 #### Aggregation
-
-```
-left to right direction
-class1 o-- class2
-```
-
 @startuml
-left to right direction
-class1 o-- class2
+    left to right direction
+    skinparam noteFontName Consolas
+    hide empty members
+    
+    class1 o-- class2 : Aggregation
+
+    note right
+        class2 can exist independent of class1.
+        plantUML:
+           class1 o-- class2 : Aggregation
+    end note
 @enduml
 
-#### Komposition
 
-```
-left to right direction
-class1 *-- class2
-```
 
-@startuml
-left to right direction
-class1 *-- class2
-@enduml
 
 
 
