@@ -7,14 +7,19 @@
 - [UML & Markdown](#uml--markdown)
   - [Table of Contents](#table-of-contents)
   - [Links & Sources](#links--sources)
+  - [TODO](#todo)
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
-    - [Usage](#usage)
-      - [Inheritance](#inheritance)
-      - [Realization (Interface inheritance)](#realization-interface-inheritance)
+    - [Use plantUML within a Markdown document](#use-plantuml-within-a-markdown-document)
+  - [UML Diagrams (UML 2.5)](#uml-diagrams-uml-25)
+    - [Class Diagram](#class-diagram)
+      - [Class Notation](#class-notation)
       - [Association](#association)
-      - [Composition](#composition)
+      - [Dependency](#dependency)
       - [Aggregation](#aggregation)
+      - [Composition](#composition)
+      - [Inheritance](#inheritance)
+      - [Interface Realization (Interface Inheritance)](#interface-realization-interface-inheritance)
     - [Activity Diagram (Flow Chart)](#activity-diagram-flow-chart)
       - [Connector & Detach](#connector--detach)
       - [Grouping (partitions)](#grouping-partitions)
@@ -25,33 +30,64 @@
       - [Markdown compliant](#markdown-compliant)
       - [Symbols](#symbols)
 
+<div style="page-break-after: always;" />
+
 ## Links & Sources
 
-* [OOSE UML Notationsübersicht](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
-* [CommonMark: Markdown Syntax](https://commonmark.org/help/)
-* [plantUML Website](https://plantuml.com/en/)
+* [UML Diagrams: Wikipedia](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams)
+* [UML Diagrams: uml-diagrams.org](https://www.uml-diagrams.org/class-diagrams-overview.html)
+* [UML Basic Notations: tutorialspoint.com](https://www.tutorialspoint.com/uml/uml_basic_notations.htm)
+* [UML Quick Reference: nomagic.com](https://www.nomagic.com/support/quick-reference-guides)
+* [UML Notation Overview (German): oose.de](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
+* [Markdown Syntax: commonmark.org](https://commonmark.org/help/)
+* [plantUML: plantuml.com](https://plantuml.com/en/)
+* [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
+
+## TODO
+
+Notes:
+```
+' Helps sorting the classes:
+Together{
+    class A
+    class B
+}
+```
 
 ## plantUML Introduction
 
 ### Available Diagrams
 
 @startuml
-title Sequence Diagram
-class1 -> class2 : DoSomething()
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+
+    skinparam style strictuml
+
+    title Sequence Diagram
+
+    class1 -> class2 : DoSomething()
 @enduml
 
 @startuml
-left to right direction
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam Shadowing false
 
-title Use Case Diagram
-Actor1 --> (Use Case)
+    skinparam style strictuml
+
+    left to right direction
+
+    title Use Case Diagram
+    
+    Actor1 --> (Use Case)
 @enduml
 
 TODO: ... to be continued... 
 
-### Usage
+### Use plantUML within a Markdown document
 
-Within a markdown document a plantUML section is marked with the tags  `@startuml` and `@enduml`.
+Within a markdown document a plantUML section is marked with the tags `@startuml` and `@enduml`.
 
 Example:
 ```{.md}
@@ -71,241 +107,327 @@ Class1 <|-- Class2 : Inheritance
 
 @startuml
 
-title Formatting + General purpose syntax
+    ' Choose the "strictuml" style to more comply with the UML specification
+    skinparam style strictuml
 
-' This is a (one line) comment. This line will be ignored by plantUML.
+    title Formatting + General purpose syntax
 
-/' This is ...
-   ... a multiline comment.
-'/
+    ' This is a (one line) comment. This line will be ignored by plantUML.
 
-note left
-    This is **bold**
-    This is //italic//
-    This is ""monospaced""
-    This is --stroked--
-    This is __underlined__
-end note
+    /' This is ...
+       ... a multiline comment.
+    '/
 
-@enduml
-
-```{.md}
-@startuml
-
-title Formatting + General purpose syntax
-
-' This is a (one line) comment. This line will be ignored by plantUML.
-
-/' This is ...
-   ... a multiline comment.
-'/
-
-note left
-    This is **bold**
-    This is //italic//
-    This is ""monospaced""
-    This is --stroked--
-    This is __underlined__
-end note
-
-@enduml
-```
-
-@startuml
-
-title Notes
-
-note left
-    note at the left side
-end note
-
-note right
-    note at the right side
-end note
-
-note bottom
-    note at the bottom
-end note
-
-note top
-    note at the top
-end note
-
-@enduml
-
-```{.md}
-@startuml
-
-title Notes
-
-note left
-    note at the left side
-end note
-
-note right
-    note at the right side
-end note
-
-note bottom
-    note at the bottom
-end note
-
-note top
-    note at the top
-end note
-
-@enduml
-```
-
-### Class Diagrams (former name *"Entity-Relationship-Diagram"*)
-
-* [Class Diagram Syntax @plantuml.com](http://plantuml.com/de/class-diagram)
-* [Class Diagram (Wikipedia)](https://en.wikipedia.org/wiki/Class_diagram)
-
-@startuml
-    title Class Diagram: General Syntax
-    
-    ' optional switch to set the diagram orientation:
-    left to right direction
-
-    ' optional:
-    hide empty members
-
-    ' "as" sets an alias name, here "c2" for "class2"
-    class "class2" as c2
-
-    class1 "line start" -- "line end" c2 : line middle
-@enduml
-
-```{.md}
-    ' optional switch to set the diagram orientation:
-    left to right direction
-
-    ' optional:
-    hide empty members
-
-    ' "as" sets an alias name, here "c2" for "class2"
-    class "class2" as c2
-    
-    class1 "line start" -- "line end" c2 : line middle
-```
-
-#### Inheritance
-
-@startuml
-    left to right direction
-    skinparam noteFontName Consolas
-    hide empty members
-
-    class1 <|-- class2
-
-    note right of class2
-        plantUML: 
-           class1 <|-- class2
-        or:
-           class class2 extends class1
+    note left
+        This is **bold**
+        This is //italic//
+        This is ""monospaced""
+        This is --stroked--
+        This is __underlined__
     end note
+
 @enduml
 
-* "class 2 inherits from class1"
-* or: "class2 extends class 1"
+```{.md}
+@startuml
 
-#### Realization (Interface inheritance)
+    ' Choose the "strictuml" style to more comply with the UML specification
+    skinparam style strictuml
+
+    title Formatting + General purpose syntax
+
+    ' This is a (one line) comment. This line will be ignored by plantUML.
+
+    /' This is ...
+       ... a multiline comment.
+    '/
+
+    note left
+        This is **bold**
+        This is //italic//
+        This is ""monospaced""
+        This is --stroked--
+        This is __underlined__
+    end note
+
+@enduml
+```
 
 @startuml
-    left to right direction
+
+title Notes
+
+note left
+    note at the left side
+end note
+
+note right
+    note at the right side
+end note
+
+note bottom
+    note at the bottom
+end note
+
+note top
+    note at the top
+end note
+
+@enduml
+
+```{.md}
+@startuml
+
+title Notes
+
+note left
+    note at the left side
+end note
+
+note right
+    note at the right side
+end note
+
+note bottom
+    note at the bottom
+end note
+
+note top
+    note at the top
+end note
+
+@enduml
+```
+
+<div style="page-break-after: always;" />
+
+## UML Diagrams (UML 2.5)
+
+* The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use `skinparam style strictuml`.
+* To get non-colored diagram the setting `skinparam monochrome true` can be used.
+
+### Class Diagram
+
+See also:
+* [Class Diagrams Overview: uml-diagrams.org](https://www.uml-diagrams.org/class-diagrams-overview.html)
+* [Class Diagram: plantuml.com](https://plantuml.com/en/class-diagram)
+
+#### Class Notation
+@startuml
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
-    hide empty members
 
-    interface interface1
-    interface1 <|.. class2
+    'hide empty members
+    'left to right direction
+    skinparam style strictuml
 
-    note right 
+    class ClassName
+    {
+        field1 : Type = DefaultValue
+        {field} -field2 : Type     //(private)//
+        {field} #field3 : Int32    //(protected)//
+        ~method1() : ReturnType  //(internal)//
+        +method2() : string      //(public)//
+    }
+
+    note right
         plantUML:
-           interface interface1
-           interface1 <|.. class2
-        or:
-           class class1 implements interface1
-    end note
-@enduml
+           class ClassName
+           {
+               field1 : Type = DefaultValue
+               {field} -field2 : Type     //(private)//
+               {field} #field3 : Int32    //(protected)//
+               ~method1() : ReturnType  //(internal)//
+               +method2() : string      //(public)//
+           }
 
-* "class2 implements interface1"
-* or: "class2 realizes interface1"
-* or: "class2 inherits from interface1"
+        hint: {field} is used to mark attributes, 
+              which contain () braces.
+    end note
+
+@enduml
 
 #### Association
 
 @startuml
-    left to right direction
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
-    hide empty members
 
-    title Association
+    hide empty members
+    left to right direction
+    skinparam style strictuml
 
     class1 "1" -- "*" class2
 
     note right 
+        **__Association__**
+            - "class1 and class2 are associated"
+            - "The relation consists of **1** object of class1 
+               and * objects of class2"
         plantUML:
-           class1 "1" -- "*" class2
+           //class1 "1" -- "*" class2//
     end note
 @enduml
 
-* "class1 and class 2 are associated"
+@startuml
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
+    skinparam noteFontName Consolas
+
+    hide empty members
+    left to right direction
+    skinparam style strictuml
+
+    Book "1..*" -- "1..*" Author: < wrote
+    note right
+        Example for an association
+    end note
+@enduml
 
 @startuml
-    left to right direction
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
-    hide empty members
 
-    title Association with *association class*
+    hide empty members
+    left to right direction
+    skinparam style strictuml
 
     class1 "1" -- "*" class2
     (class1, class2) .. "AssociationClass"
         
     note right of class2
+        **__Attributed Association__**
         plantUML:
-           class1 "1" -- "*" class2
-           (class1, class2) .. "AssociationClass"
+           //class1 "1" -- "*" class2//
+           //(class1, class2) .. "AssociationClass"//
     end note
 @enduml
 
-#### Composition
+#### Dependency
 @startuml
-    left to right direction
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
-    hide empty members
-    
-    class1 *-- class2 : Composition
 
-    note right
-        class2 can *not* exist without class1.
+    hide empty members
+    left to right direction
+    skinparam style strictuml
+
+    class1 ..> class2 : uses >
+    
+    note bottom of class1
+        Dependend
+    end note
+
+    note bottom of class2
+        Independend
+    end note
+
+    note right of class2
+        **__Dependency__**
         plantUML:
-           class1 *-- class2 : Composition
+           //class1 ..> class2 : depends on >//
     end note
 @enduml
 
 #### Aggregation
 @startuml
-    left to right direction
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+
     hide empty members
+    left to right direction
+    skinparam style strictuml
     
-    class1 o-- class2 : Aggregation
+    class1 --o class2 : < has
 
     note right
-        class2 can exist independent of class1.
+        **__Aggregation__**
+            - class1 is part of class2.
+            - class1 can exist independent of class2.
         plantUML:
-           class1 o-- class2 : Aggregation
+           //class1 --o class2 : Aggregation//
+    end note
+@enduml
+
+#### Composition
+@startuml
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
+    skinparam noteFontName Consolas
+
+    hide empty members
+    left to right direction
+    skinparam style strictuml
+    
+    class1 --* class2 : < owns
+
+    note right
+        **__Composition__**
+            - class1 is part of class2.
+            - class1 can //not// exist without class2.
+        plantUML:
+           //class1 *-- class2 : Composition//
     end note
 @enduml
 
 
+#### Inheritance
+@startuml
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
+    skinparam noteFontName Consolas
 
+    'hide empty members
+    'left to right direction
+    skinparam style strictuml
 
+    class1 <|-- class2 
 
+    note right
+        **__Inheritance__**
+          - "class2 inherits from class1"
+          - "class2 extends class1"
+        
+        plantUML: 
+           //class1 <|-- class2//
+        or:
+           //class class2 extends class1//
+    end note
+@enduml
 
+#### Interface Realization (Interface Inheritance)
+@startuml
+    skinparam classFontName Consolas
+    skinparam classAttributeFontName Consolas
+    skinparam noteFontName Consolas
 
+    'hide empty members
+    'left to right direction
+    skinparam style strictuml
 
+    interface interface1
+    interface1 <|.. class2
+
+    note right 
+        **__Interface Realization__**
+            - "class2 implements interface1"
+            - "class2 realizes interface1"
+            - "class2 inherits from interface1"
+        
+        plantUML: 
+           //interface interface1//
+           //interface1 <|.. class2//
+        or:
+           //class class1 implements interface1//
+    end note
+@enduml
+
+<div style="page-break-after: always;" />
 
 ### Activity Diagram (Flow Chart)
 
@@ -402,6 +524,8 @@ stop
 
 @enduml
 
+<div style="page-break-after: always;" />
+
 ### MindMap Diagram
 
 #### Basic MindMap syntax
@@ -445,7 +569,6 @@ caption My Caption
 center footer My Footer
 @endmindmap
 
-
 #### Markdown compliant
 
 @startmindmap
@@ -460,7 +583,6 @@ center footer My Footer
 #### Symbols
 
 @startmindmap
-
 * Symbols
 	* <&flag> <&flag >
 	* <&globe> <&globe >
@@ -468,5 +590,4 @@ center footer My Footer
 	* <&pulse> <&pulse >
 	* <&people> <&people >
 	* <&star> <&star >
-
 @endmindmap
