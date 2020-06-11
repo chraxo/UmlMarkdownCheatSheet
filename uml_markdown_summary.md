@@ -27,9 +27,13 @@
 
 ## Links & Sources
 
-* [OOSE UML Notationsübersicht](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
-* [CommonMark: Markdown Syntax](https://commonmark.org/help/)
-* [plantUML Website](https://plantuml.com/en/)
+* [UML Diagrams: Wikipedia](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams)
+* [UML Diagrams: uml-diagrams.org](https://www.uml-diagrams.org/class-diagrams-overview.html)
+* [UML Basic Notations: tutorialspoint.com](https://www.tutorialspoint.com/uml/uml_basic_notations.htm)
+* [UML Quick Reference: nomagic.com](https://www.nomagic.com/support/quick-reference-guides)
+* [UML Notation Overview (German): oose.de](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
+* [Markdown Syntax: commonmark.org](https://commonmark.org/help/)
+* [plantUML: plantuml.com](https://plantuml.com/en/)
 
 ## plantUML Introduction
 
