@@ -1,13 +1,17 @@
-# UML & Markdown Summary
+# UML & Markdown
 
-[plantUML](http://plantuml.com/)
+<!-- Hint: use Visual Studio Code with packages *plantUML* and *Markdown PDF*  -->
 
 ## Table of Contents
 
-- [UML & Markdown Summary](#uml--markdown-summary)
+- [UML & Markdown](#uml--markdown)
   - [Table of Contents](#table-of-contents)
-    - [General plantUML syntax](#general-plantuml-syntax)
-    - [Class Diagram (formerly Entity-Relationship-Diagram)](#class-diagram-formerly-entity-relationship-diagram)
+  - [Links & Sources](#links--sources)
+  - [plantUML Introduction](#plantuml-introduction)
+    - [Available Diagrams](#available-diagrams)
+    - [Usage](#usage)
+      - [Inheritance (2)](#inheritance-2)
+      - [Realization (2)](#realization-2)
     - [Activity Diagram (Flow Chart)](#activity-diagram-flow-chart)
       - [Connector & Detach](#connector--detach)
       - [Grouping (partitions)](#grouping-partitions)
@@ -18,85 +22,234 @@
       - [Markdown compliant](#markdown-compliant)
       - [Symbols](#symbols)
 
+## Links & Sources
 
+* [OOSE UML Notationsübersicht](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
+* [CommonMark: Markdown Syntax](https://commonmark.org/help/)
+* [plantUML Website](https://plantuml.com/en/)
 
-### General plantUML syntax
+## plantUML Introduction
 
-**Markdown**
+### Available Diagrams
+
+@startuml
+title Sequence Diagram
+class1 -> class2 : DoSomething()
+@enduml
+
+@startuml
+left to right direction
+
+title Use Case Diagram
+Actor1 --> (Use Case)
+@enduml
+
+TODO: ... to be continued... 
+
+### Usage
+
+Within a markdown document a plantUML section can be marked with the tags  `@startuml` and `@enduml`.
+
+Example:
+```{.md}
+@startuml
+Class1 <|-- Class2 : Inheritance
+@enduml
+```
+
+Result:
+@startuml
+Class1 <|-- Class2 : Inheritance
+@enduml
+
+### Formatting
+
 ```{.md}
 @startuml
 
-title Overview about the general plantUML syntax
+title Formatting + General purpose syntax
 
-' This is a one line comment and will be ignored by plantUML
+' This is a (one line) comment. This line will be ignored by plantUML.
 
 /' This is ...
-   ... as multiline comment.
+   ... a multiline comment.
 '/
 
 note left
     This is **bold**
     This is //italic//
     This is ""monospaced""
-    This is -- stroked--
+    This is --stroked--
     This is __underlined__
 end note
 
 @enduml
 ```
 
-**Result**
+```{.md}
 @startuml
 
-title Overview about the general plantUML syntax
-
-' This is a one line comment and will be ignored by plantUML
-
-/' This is ...
-   ... as multiline comment.
-'/
+title Notes
 
 note left
-    This is **bold**
-    This is //italic//
-    This is ""monospaced""
-    This is -- stroked--
-    This is __underlined__
+    note at the left side
+end note
+
+note right
+    note at the right side
+end note
+
+note bottom
+    note at the bottom
+end note
+
+note top
+    note at the top
 end note
 
 @enduml
+```
 
-### Class Diagram (formerly Entity-Relationship-Diagram)
+### Class Diagrams (former name *"Entity-Relationship-Diagram"*)
 
-[plantUML: Class Diagram Syntax](http://plantuml.com/de/class-diagram)
+[Class Diagram Syntax @plantuml.com](http://plantuml.com/de/class-diagram)
+
+[Class Diagram (Wikipedia)](https://en.wikipedia.org/wiki/Class_diagram)
 
 @startuml
-title Class Diagram
+title Class Diagrams: General Syntax
+left to right direction
 
-' ABBREVIATIONS
-class "other class" as OC
-SomeClass --|> OC
-note right
-    here 'other class'
-    has the abbre-
-    viation 'OC'
-end note
-
-' CLASS RELATIONS
-Class1 <|-- Class2 : Inheritance
-note right 
-    Class2 inherits
-    from Class1
-end note
-
-Class3 "1" -- "*" Class4 : Association
-note right: Class4
-
-Class03 *-- Class04 : **Composition**\nClass04 is\npart of\nClass03
-Class05 o-- Class06 : Aggregation
-Class07 .. Class08
-
+class "class2" as c2
+class1 "line start" -- "line end" c2 : line middle
 @enduml
+
+#### Inheritance
+
+```{.md}
+class1 <|-- class2 : extends <
+```
+
+@startuml
+left to right direction
+class1 <|-- class2 : extends <
+note right 
+    class2 extends (inherits from)
+    from class1
+end note
+@enduml
+
+#### Inheritance (2)
+
+```{.md}
+class class2 extends class1
+```
+
+@startuml
+left to right direction
+class class2 extends class1
+@enduml
+
+#### Realization (Interface inheritance)
+
+```{.md}
+interface1 <|.. class2
+```
+
+@startuml
+left to right direction
+interface1 <|.. class2
+note right 
+    class2 realizes (implements 
+    / "inherits from") interface1
+end note
+@enduml
+
+#### Realization (2)
+
+```{.md}
+class class2 implements interface1
+```
+
+@startuml
+left to right direction
+class class2 implements interface1
+@enduml
+
+#### Association
+
+```
+class1 "1" -- "*" class2
+```
+
+@startuml
+left to right direction
+class1 "1" -- "*" class2
+note right 
+    class1 and class 2 are associated
+end note
+@enduml
+
+#### Association (2)
+
+```
+class1 "1" -- "*" class2
+(class1, class2) .. "AssociationClass"
+```
+
+@startuml
+class1 "1" -- "*" class2
+(class1, class2) .. "AssociationClass"
+@enduml
+
+
+```
+class1 "1" -- "*" class2
+(class1, class2) . "AssociationClass"
+```
+
+@startuml
+class1 "1" -- "*" class2
+(class1, class2) . "AssociationClass"
+@enduml
+
+#### Composition
+@startuml
+left to right direction
+class1 *-- class2
+note right 
+    Composition
+end note
+@enduml
+
+#### Aggregation
+
+```
+left to right direction
+class1 o-- class2
+```
+
+@startuml
+left to right direction
+class1 o-- class2
+@enduml
+
+#### Komposition
+
+```
+left to right direction
+class1 *-- class2
+```
+
+@startuml
+left to right direction
+class1 *-- class2
+@enduml
+
+
+
+
+
 
 ### Activity Diagram (Flow Chart)
 
