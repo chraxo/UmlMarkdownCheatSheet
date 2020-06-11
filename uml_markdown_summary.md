@@ -10,8 +10,13 @@
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
     - [Usage](#usage)
-      - [Inheritance (2)](#inheritance-2)
-      - [Realization (2)](#realization-2)
+      - [Inheritance ("arrow syntax")](#inheritance-arrow-syntax)
+      - [Realization (Interface inheritance)](#realization-interface-inheritance)
+      - [Association](#association)
+      - [Association with *association class*](#association-with-association-class)
+      - [Composition](#composition)
+      - [Aggregation](#aggregation)
+      - [Komposition](#komposition)
     - [Activity Diagram (Flow Chart)](#activity-diagram-flow-chart)
       - [Connector & Detach](#connector--detach)
       - [Grouping (partitions)](#grouping-partitions)
@@ -48,7 +53,7 @@ TODO: ... to be continued...
 
 ### Usage
 
-Within a markdown document a plantUML section can be marked with the tags  `@startuml` and `@enduml`.
+Within a markdown document a plantUML section is marked with the tags  `@startuml` and `@enduml`.
 
 Example:
 ```{.md}
@@ -63,6 +68,26 @@ Class1 <|-- Class2 : Inheritance
 @enduml
 
 ### Formatting
+
+@startuml
+
+title Formatting + General purpose syntax
+
+' This is a (one line) comment. This line will be ignored by plantUML.
+
+/' This is ...
+   ... a multiline comment.
+'/
+
+note left
+    This is **bold**
+    This is //italic//
+    This is ""monospaced""
+    This is --stroked--
+    This is __underlined__
+end note
+
+@enduml
 
 ```{.md}
 @startuml
@@ -85,6 +110,28 @@ end note
 
 @enduml
 ```
+
+@startuml
+
+title Notes
+
+note left
+    note at the left side
+end note
+
+note right
+    note at the right side
+end note
+
+note bottom
+    note at the bottom
+end note
+
+note top
+    note at the top
+end note
+
+@enduml
 
 ```{.md}
 @startuml
@@ -112,34 +159,43 @@ end note
 
 ### Class Diagrams (former name *"Entity-Relationship-Diagram"*)
 
-[Class Diagram Syntax @plantuml.com](http://plantuml.com/de/class-diagram)
-
-[Class Diagram (Wikipedia)](https://en.wikipedia.org/wiki/Class_diagram)
+* [Class Diagram Syntax @plantuml.com](http://plantuml.com/de/class-diagram)
+* [Class Diagram (Wikipedia)](https://en.wikipedia.org/wiki/Class_diagram)
 
 @startuml
-title Class Diagrams: General Syntax
+title Class Diagram: General Syntax
 left to right direction
 
 class "class2" as c2
 class1 "line start" -- "line end" c2 : line middle
 @enduml
 
-#### Inheritance
+```{.md}
+' optional switch to set the diagram orientation:
+left to right direction
+
+' "as" sets an alias name, here "c2" for "class2"
+class "class2" as c2
+
+class1 "line start" -- "line end" c2 : line middle
+```
+
+#### Inheritance ("arrow syntax")
 
 ```{.md}
-class1 <|-- class2 : extends <
+class1 <|-- class2
 ```
 
 @startuml
 left to right direction
-class1 <|-- class2 : extends <
+class1 <|-- class2
 note right 
-    class2 extends (inherits from)
-    from class1
+    class2 extends class 1
+    (or: class 2 inherits from class1)
 end note
 @enduml
 
-#### Inheritance (2)
+#### Inheritance ("extends" syntax)
 
 ```{.md}
 class class2 extends class1
@@ -190,7 +246,7 @@ note right
 end note
 @enduml
 
-#### Association (2)
+#### Association with *association class*
 
 ```
 class1 "1" -- "*" class2
