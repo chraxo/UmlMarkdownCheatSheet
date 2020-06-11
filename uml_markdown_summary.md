@@ -7,6 +7,7 @@
 - [UML & Markdown](#uml--markdown)
   - [Table of Contents](#table-of-contents)
   - [Links & Sources](#links--sources)
+  - [TODO](#todo)
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
     - [Use plantUML within a Markdown document](#use-plantuml-within-a-markdown-document)
@@ -29,6 +30,8 @@
       - [Markdown compliant](#markdown-compliant)
       - [Symbols](#symbols)
 
+<div style="page-break-after: always;" />
+
 ## Links & Sources
 
 * [UML Diagrams: Wikipedia](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams)
@@ -40,10 +43,10 @@
 * [plantUML: plantuml.com](https://plantuml.com/en/)
 * [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
 
-notes
-```
-skinparam style strictuml
+## TODO
 
+Notes:
+```
 ' Helps sorting the classes:
 Together{
     class A
@@ -196,6 +199,8 @@ end note
 @enduml
 ```
 
+<div style="page-break-after: always;" />
+
 ## UML Diagrams (UML 2.5)
 
 * The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use `skinparam style strictuml`.
@@ -217,8 +222,6 @@ See also:
     'left to right direction
     skinparam style strictuml
 
-    title Class Notation
-
     class ClassName
     {
         field1 : Type = DefaultValue
@@ -238,6 +241,7 @@ See also:
                ~method1() : ReturnType  //(internal)//
                +method2() : string      //(public)//
            }
+
         hint: {field} is used to mark attributes, 
               which contain () braces.
     end note
@@ -423,6 +427,8 @@ See also:
     end note
 @enduml
 
+<div style="page-break-after: always;" />
+
 ### Activity Diagram (Flow Chart)
 
 [plantUML: NEW Activity Diagram Syntax](http://plantuml.com/activity-diagram-beta)
@@ -518,6 +524,8 @@ stop
 
 @enduml
 
+<div style="page-break-after: always;" />
+
 ### MindMap Diagram
 
 #### Basic MindMap syntax
@@ -561,7 +569,6 @@ caption My Caption
 center footer My Footer
 @endmindmap
 
-
 #### Markdown compliant
 
 @startmindmap
@@ -576,7 +583,6 @@ center footer My Footer
 #### Symbols
 
 @startmindmap
-
 * Symbols
 	* <&flag> <&flag >
 	* <&globe> <&globe >
@@ -584,5 +590,4 @@ center footer My Footer
 	* <&pulse> <&pulse >
 	* <&people> <&people >
 	* <&star> <&star >
-
 @endmindmap
