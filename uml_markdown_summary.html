@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>uml_markdown_summary.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="uml--markdown">UML &amp; Markdown</h1>
+<!-- Hint: use Visual Studio Code with packages *plantUML* and *Markdown PDF*  -->
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#uml--markdown">UML &amp; Markdown</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#links--sources">Links &amp; Sources</a></li>
+<li><a href="#plantuml-introduction">plantUML Introduction</a>
+<ul>
+<li><a href="#available-diagrams">Available Diagrams</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#realization-interface-inheritance">Realization (Interface inheritance)</a></li>
+<li><a href="#association">Association</a></li>
+<li><a href="#composition">Composition</a></li>
+<li><a href="#aggregation">Aggregation</a></li>
+</ul>
+</li>
+<li><a href="#activity-diagram-flow-chart">Activity Diagram (Flow Chart)</a>
+<ul>
+<li><a href="#connector--detach">Connector &amp; Detach</a></li>
+<li><a href="#grouping-partitions">Grouping (partitions)</a></li>
+<li><a href="#detach">Detach</a></li>
+</ul>
+</li>
+<li><a href="#mindmap-diagram">MindMap Diagram</a>
+<ul>
+<li><a href="#basic-mindmap-syntax">Basic MindMap syntax</a></li>
+<li><a href="#headers-etc">Headers etc.</a></li>
+<li><a href="#markdown-compliant">Markdown compliant</a></li>
+<li><a href="#symbols">Symbols</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="links--sources">Links &amp; Sources</h2>
+<ul>
+<li><a href="https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf">OOSE UML Notationsübersicht</a></li>
+<li><a href="https://commonmark.org/help/">CommonMark: Markdown Syntax</a></li>
+<li><a href="https://plantuml.com/en/">plantUML Website</a></li>
+</ul>
+<h2 id="plantuml-introduction">plantUML Introduction</h2>
+<h3 id="available-diagrams">Available Diagrams</h3>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuIh9BCb9LGXEBInDpKjELN39J4mlIipbIiv9B2usLD2rKm2pZ1Ii55poW_DpKqioClFIDJIv75BpKe3w0G00" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuSf9JIjHACbNACfCpoXHICaiIaqkoSpFu-8goIp9ILK8BKvLS4u44YwPYUb5YRbSZiab-KM62hgwTWeQC4bDBeVKl1IWQG00" alt="uml diagram">
+<p>TODO: ... to be continued...</p>
+<h3 id="usage">Usage</h3>
+<p>Within a markdown document a plantUML section is marked with the tags  <code>@startuml</code> and <code>@enduml</code>.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div>@startuml
+Class1 &lt;|-- Class2 : Inheritance
+@enduml
+</div></code></pre>
+<p>Result:</p>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBEIImkDbImgT7LLG2pZHIi53ppCbABCaiIyv9JkHnIyrA02W40" alt="uml diagram">
+<h3 id="formatting">Formatting</h3>
+<ul>
+<li>See also <a href="https://plantuml.com/de/creole">https://plantuml.com/de/creole</a></li>
+</ul>
+<img src="http://www.plantuml.com/plantuml/svg/LL11JiGm3Bpx5LOl2qLDlh0dkC0DpbNQc2N2iQl45UplIK20AbcoDUCPZtok5ehjcG4i6HFUQyd1BCa5x_21X4fWtFQoQIMiLx7m2N32vxTKiLN06nL2JaAtk6hE9EP-s8xXHsB6XJ1TH0j5NAwuSH1xUNfq0FxVo3a7YBqrpxopfM_zhoMSF82ejLFqQdtpJpcEYt8SnmFeVRB0QVN-00z3Lj6wXPNYC1oeQQfMz9tYD1tmUTubKkbfuZm3ISIU0-3SnlQuBm00" alt="uml diagram">
+<pre class="hljs"><code><div>@startuml
+
+title Formatting + General purpose syntax
+
+' This is a (one line) comment. This line will be ignored by plantUML.
+
+/' This is ...
+   ... a multiline comment.
+'/
+
+note left
+    This is **bold**
+    This is //italic//
+    This is &quot;&quot;monospaced&quot;&quot;
+    This is --stroked--
+    This is __underlined__
+end note
+
+@enduml
+</div></code></pre>
+<img src="http://www.plantuml.com/plantuml/svg/RO_13O0W34NldQAZC84xOAX20jJ0TtyHIKp4Njh_-dgegR05Puf428Z2Yq8gKMwDesmWRjMJ1SC_a6jmGf9TtmoxXDtFUgU__gg0fkbWu8yCFIRpPgzcsjZ-k000" alt="uml diagram">
+<pre class="hljs"><code><div>@startuml
+
+title Notes
+
+note left
+    note at the left side
+end note
+
+note right
+    note at the right side
+end note
+
+note bottom
+    note at the bottom
+end note
+
+note top
+    note at the top
+end note
+
+@enduml
+</div></code></pre>
+<h3 id="class-diagrams-former-name-%22entity-relationship-diagram%22">Class Diagrams (former name <em>&quot;Entity-Relationship-Diagram&quot;</em>)</h3>
+<ul>
+<li><a href="http://plantuml.com/de/class-diagram">Class Diagram Syntax @plantuml.com</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Class_diagram">Class Diagram (Wikipedia)</a></li>
+</ul>
+<img src="http://www.plantuml.com/plantuml/svg/NP0xRWCn34JxFSL0JPguo9PR6KY0720dO5QqHK0VWwAH-FQXv7o0i218pXiAuh4RgLrBNk1XOfdndAbtl0YTbSg6LwwibF5sgqQVavlf0UrYqgfB_KDiJx26pWPBZ7XtewcmsmQtJLVcamrGvPpCCULzYCk_bNSuIMHmkTWDXSixQ__X0lKm7kkW2if27PKAFoAnCiA-1foQUZ7-ieRfclNl26xPr-LFUKB8KXdp8W67mtVFDGOdiM6sHMBCl1nzx6Vx0W00" alt="uml diagram">
+<pre class="hljs"><code><div>    ' optional switch to set the diagram orientation:
+    left to right direction
+
+    ' optional:
+    hide empty members
+
+    ' &quot;as&quot; sets an alias name, here &quot;c2&quot; for &quot;class2&quot;
+    class &quot;class2&quot; as c2
+    
+    class1 &quot;line start&quot; -- &quot;line end&quot; c2 : line middle
+</div></code></pre>
+<h4 id="inheritance">Inheritance</h4>
+<img src="http://www.plantuml.com/plantuml/svg/RP0n3i8m34Ntdi8Nw536Yg4I4XEmSO3Gk3GYiQFOI21nU4AQii2VxF-VRCk3g4bw3xw1B8-JWZ8aTvqLh4iugcCgcTmSHPDC06B5FPEUJ43OCGbx8uMPdKN04FK90SC5apJ57pCW7MnVRRlKcyN_JAhBU5eJg8hUa9wFXnw-rlzHQyIf_o4h0_XG95lRhc2vBmSqGwxo1zu0" alt="uml diagram">
+<ul>
+<li>&quot;class 2 inherits from class1&quot;</li>
+<li>or: &quot;class2 extends class 1&quot;</li>
+</ul>
+<h4 id="realization-interface-inheritance">Realization (Interface inheritance)</h4>
+<img src="http://www.plantuml.com/plantuml/svg/VP2z3i902CVtFWLFO597uz34n4dTV82pfPPumEKE1nCVtklLZxI330JumHz2ayn5kxEl89l7ti0K8bq7WuuYjaOgXQKRIN3HCOWQxbNiv1XXfvBKkrHw1keGa8CzW94l65DLwYI6iNSj_g9w3chOFbShQBDIMaz3uvht9IKVBNWdTZuUDj_AF_Kbdo_vO8qpjK8dNmDnyCWebfRQA5svi6fobF_t0W00" alt="uml diagram">
+<ul>
+<li>&quot;class2 implements interface1&quot;</li>
+<li>or: &quot;class2 realizes interface1&quot;</li>
+<li>or: &quot;class2 inherits from interface1&quot;</li>
+</ul>
+<h4 id="association">Association</h4>
+<img src="http://www.plantuml.com/plantuml/svg/VO-n3i9028RtFWMvqQH37PrgJ9pKpGSuMxJ4EsWE77nxhzGuoWJV3p_GgyLYhvmQg97mRc02XHwJmKW51oDXr_H9FCSICx0O7eNj4ZF2GLWbHVMUYKO4pBEz8ME-OT76kP4bXBsg31JTqV5GvxI3q0LeMmYRi9BjgYvhlfTulSIS8jlrVDhzo3-RHKGUtQdfQrR__000" alt="uml diagram">
+<ul>
+<li>&quot;class1 and class 2 are associated&quot;</li>
+</ul>
+<img src="http://www.plantuml.com/plantuml/svg/bP312i8m44Jl_Oeb9ossK8-UAe8dzUO7hEtM1fDiILR4lxT9Y_GcpcbvCmoJr47GozEQ34OPwWI4mUjxBz1gJureTiaB3-q6z6Z1iT2HdLpG4XpO1JOOKgRNBG7PGTvWoTx8XonnqM88zY5mep4smajB3pakI3EMX7pAfxi2LIae2b2vciWscQl9tSni3MK9Qj5zY5YbQ5GwukJvLTmjow86WqwkvzFkItvDcFN74d9j6f7LupL-zmS0" alt="uml diagram">
+<h4 id="composition">Composition</h4>
+<img src="http://www.plantuml.com/plantuml/svg/ZP2_2i903CRtFaNcGWKxTYe8Jkhc0yGssk1TSjobg6_lzIgTpH3ov_VbW_J9CDhiNGKv7DqDJ27oOp8OET9Wh59swSaICA87KQEZYbtG4nnKaZfCXPbu920Vx0EU_8tYEYvfo53QGzqqQzb2byK-QEBYKQ3bzEfUsatNme02TLxNG6zE1Y-sIMVxdTrjU70eTZsVkctoX_V2a8p5lkfpbH_o1G00" alt="uml diagram">
+<h4 id="aggregation">Aggregation</h4>
+<img src="http://www.plantuml.com/plantuml/svg/ZP0z3i8m38LtJk4B58cEdOgGc82D0vZMJIqIEqgC1BSdJL5dF5Z--VoUv3uR9di5luCIdYO3KqZiPeEH4mt6AdMNdomH4mOGDJghs0q3mKabgyTScPb70WhHFX0eF2Yjuvg60kK3QDEiPGiT79rBvB1wL6YHNjrhkzsrCA00lJaRi8mKgIGnqEcdkz_uw57iVhrqs-GFyuKfajL_rvUgVEGB" alt="uml diagram">
+<h3 id="activity-diagram-flow-chart">Activity Diagram (Flow Chart)</h3>
+<p><a href="http://plantuml.com/activity-diagram-beta">plantUML: NEW Activity Diagram Syntax</a></p>
+<img src="http://www.plantuml.com/plantuml/svg/LP11Qy9048NlyolUCPwqhVQGN4mrOa2CD4BFmOvcOBCRah7Yl--wMDZERTvyxpsOvQZDeDVEa8eQJf6VL7v4xrXBSncQ3bDiZBjXrNgEAE14rYbZa4khAMhNCHu2KLehzxCNgldax3UCMCw8v8maG0zHL9oTG5ksIEuyJWX-WZ7FYCt8IAoBr0-lUjlvB_tL9zvQCPxxsfQx0hkgEgHOLVjrUIohVMITlMNHCWz1mKeqSC-DHjT5ZBvdJm3Ffi_YKEH7XC9_NVuXhYTQ-cJ_n5y0" alt="uml diagram">
+<h4 id="connector--detach">Connector &amp; Detach</h4>
+<img src="http://www.plantuml.com/plantuml/svg/9Sqn3eCm34RXtQVm25DRnh20g7g1dY0A5h4KOfJ-jEhjYM3_djxmWI_OrqHG974y1kXNyUUd-gNubM_yIlRZALR7JTSIdGcvDsIxFtfgnfPcWG-Hia6uw1BXUBAS9S0AdUBYNLzhssYGFDVf0G00" alt="uml diagram">
+<h4 id="grouping-partitions">Grouping (partitions)</h4>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuIh9BCb9LN0loYyjoCnBvmABSnK0YSoIpFmyY8HXDPS245W5bwGM61XQ8t6ChBbgqLKR8QisHbPj0b9TN99VmEMGcfS2j1q0" alt="uml diagram">
+<h4 id="detach">Detach</h4>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuIh9BCb9LN1n3N5qzk3YiWABMtEbvHTbSoa0WLLQVhwXDPnf195II4nFpCo3Ynf35AIabYGcPt2bvgM0jNDbfYbe06LDD1LACb8HgatHLMUc0Iq6IfXPSt51HK5SSskkufBy0Yuk1w0Qe5C1" alt="uml diagram">
+<h3 id="mindmap-diagram">MindMap Diagram</h3>
+<h4 id="basic-mindmap-syntax">Basic MindMap syntax</h4>
+<p>@startmindmap</p>
+<ul>
+<li>Root node
+'* A second root node is not allowed
+** Node
+*** Subsubnode
+**_ Node without box</li>
+</ul>
+<p>left side</p>
+<p>** left side node
+** second
+@endmindmap</p>
+<p>@startmindmap</p>
+<ul>
+<li>Root Node
+++ Alternative notation with ++
+-- '--' Chooses the left side
+---_ Subnode
+---_ Subnode
+-- <s>Strike through</s>
+@endmindmap</li>
+</ul>
+<h4 id="headers-etc">Headers etc.</h4>
+<p>@startmindmap
+header My Header
+title My Title</p>
+<ul>
+<li>one
+** two
+** three</li>
+</ul>
+<p>legend right
+My
+Legend
+end legend</p>
+<p>caption My Caption
+center footer My Footer
+@endmindmap</p>
+<h4 id="markdown-compliant">Markdown compliant</h4>
+<p>@startmindmap</p>
+<ul>
+<li><strong>Markdown syntax</strong>
+<ul>
+<li>indented by <strong>TAB</strong></li>
+<li>intention by space\n is currently not possible
+<ul>
+<li>one</li>
+<li>two</li>
+</ul>
+</li>
+<li>three
+@endmindmap</li>
+</ul>
+</li>
+</ul>
+<h4 id="symbols">Symbols</h4>
+<p>@startmindmap</p>
+<ul>
+<li>Symbols
+<ul>
+<li>&lt;&amp;flag&gt; &lt;&amp;flag &gt;</li>
+<li>&lt;&amp;globe&gt; &lt;&amp;globe &gt;</li>
+<li>&lt;&amp;graph&gt; &lt;&amp;graph &gt;</li>
+<li>&lt;&amp;pulse&gt; &lt;&amp;pulse &gt;</li>
+<li>&lt;&amp;people&gt; &lt;&amp;people &gt;</li>
+<li>&lt;&amp;star&gt; &lt;&amp;star &gt;</li>
+</ul>
+</li>
+</ul>
+<p>@endmindmap</p>
+
+</body>
+</html>
