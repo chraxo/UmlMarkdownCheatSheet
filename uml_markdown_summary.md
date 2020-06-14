@@ -434,35 +434,80 @@ See also:
 [plantUML: NEW Activity Diagram Syntax](http://plantuml.com/activity-diagram-beta)
 
 @startuml
-title: Activity Diagram / Flow Chart
+    'skinparam classFontName Consolas
+    'skinparam classAttributeFontName Consolas
+    skinparam noteFontName Consolas
 
-start
+    'hide empty members
+    'left to right direction
+    'skinparam style strictuml
 
-note right: Some note
+    title: Activity Diagram / Flow Chart
 
-:Step01
-Second line;
+    start
+    note right
+        //plantUML://
+            start
+    end note
 
-if (Some condition) then (yes)
-    :StepA;
-else (no)
-    :StepB;
-endif
+    :Step01
+    Second line;
+    note right
+        //plantUML://
+            :Step01
+            Second line;
+    end note
 
-:Step02;
+    if (CONDITION) then (yes)
+        :StepA;
+    else (no)
+        :StepB;
+    endif
+    note right
+        //plantUML://
+            if (CONDITION) then (yes)
+                :StepA;
+            else (no)
+                :StepB;
+            endif
+    end note
 
-while (WHILE LOOP: CONDITION)
-    :Step03;
-    :Step04;
-endwhile
+    :Step02;
+    note right
+        //plantUML://
+           :Step02;
+    end note
 
-repeat
-    :Step05;
-    :Step06;
-repeat while (REPEAT WHILE: CONDITION)
-
-stop
-
+    while (CONDITION)
+        note right
+            //plantUML://
+                while (CONDITION)
+                    :Step03;
+                    :Step04;
+                endwhile
+        end note
+        :Step03;
+        :Step04;
+    endwhile
+    
+    repeat
+        note
+            //plantUML://
+                repeat
+                    :Step05;
+                    :Step06;
+                repeat while (CONDITION)
+        end note
+        
+        :Step05;
+        :Step06;
+    repeat while (CONDITION)
+    
+    stop
+    note right
+        //plantUML://
+            stop
+    end note
 @enduml
 
 #### Connector & Detach
