@@ -365,22 +365,27 @@ code {
           : 'default'
     });
   </script>
-<h1 id="uml--markdown">UML &amp; Markdown</h1>
-<!-- Hint: use Visual Studio Code with packages *plantUML* and *Markdown PDF*  -->
+<h1 id="uml--markdown-summary">UML &amp; Markdown Summary</h1>
+<!-- 
+    Hint for editing: Use *Visual Studio Code* together with the plugins
+    *plantUML*,
+    *Markdown All in One* and
+    *Markdown PDF*
+-->
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#uml--markdown">UML &amp; Markdown</a>
+<li><a href="#uml--markdown-summary">UML &amp; Markdown Summary</a>
 <ul>
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#links--sources">Links &amp; Sources</a></li>
-<li><a href="#todo">TODO</a></li>
 <li><a href="#plantuml-introduction">plantUML Introduction</a>
 <ul>
 <li><a href="#available-diagrams">Available Diagrams</a></li>
-<li><a href="#use-plantuml-within-a-markdown-document">Use plantUML within a Markdown document</a></li>
+<li><a href="#usage-of-plantuml-within-a-markdown-document">Usage of plantUML within a Markdown document</a></li>
+<li><a href="#basic-syntax">Basic Syntax</a></li>
 </ul>
 </li>
-<li><a href="#uml-diagrams-uml-25">UML Diagrams (UML 2.5)</a>
+<li><a href="#uml-diagrams">UML Diagrams</a>
 <ul>
 <li><a href="#class-diagram">Class Diagram</a>
 <ul>
@@ -400,6 +405,18 @@ code {
 <li><a href="#detach">Detach</a></li>
 </ul>
 </li>
+<li><a href="#plantuml-formatting--styles">plantUML formatting / styles</a>
+<ul>
+<li><a href="#border-around-the-diagrams">Border around the diagrams</a></li>
+<li><a href="#black-white-diagrams">Black White diagrams</a></li>
+</ul>
+</li>
+<li><a href="#uml-compliant-appearance">UML compliant appearance</a></li>
+<li><a href="#together">together</a></li>
+</ul>
+</li>
+<li><a href="#non-uml-diagrams">Non-UML Diagrams</a>
+<ul>
 <li><a href="#mindmap-diagram">MindMap Diagram</a>
 <ul>
 <li><a href="#basic-mindmap-syntax">Basic MindMap syntax</a></li>
@@ -422,23 +439,44 @@ code {
 <li><a href="https://www.nomagic.com/support/quick-reference-guides">UML Quick Reference: nomagic.com</a></li>
 <li><a href="https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf">UML Notation Overview (German): oose.de</a></li>
 <li><a href="https://commonmark.org/help/">Markdown Syntax: commonmark.org</a></li>
-<li><a href="https://plantuml.com/en/">plantUML: plantuml.com</a></li>
+<li><a href="https://plantuml.com/en/">plantUML.com</a></li>
 <li><a href="https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf">plantUML Reference Guide: deepu.js.org</a></li>
+<li><a href="https://plantuml.com/de/link">Hyperlinks in plantUML</a>)</li>
 </ul>
-<h2 id="todo">TODO</h2>
-<p>Notes:</p>
-<pre class="hljs"><code><div>' Helps sorting the classes:
-Together{
-    class A
-    class B
-}
-</div></code></pre>
 <h2 id="plantuml-introduction">plantUML Introduction</h2>
 <h3 id="available-diagrams">Available Diagrams</h3>
-<img src="http://www.plantuml.com/plantuml/svg/VOqx3i9034JxFOLBA2X8IH55a1k42vYDbLZx0zifSlki4j5GuC8UpOoUEpKKMr9qK4S3vpSA9kWPfthlHKQIHub5u1NHXt-rvym-P5A5nltqrDP8TGlx_TaU6rir1_eib3rzMKVc8wfUuT8Uge4Rz6KeYMpcF9tEhgCyLj86" alt="uml diagram">
-<img src="http://www.plantuml.com/plantuml/svg/VOun3i8m34Ntdi8Z31tW0AXGRW0Sm2HkQpMDaMs4k3rHW8K13y_3-xP-PuxgzoKrKCPcpZTKNE38E9Pz48salIHHk2OCyx_OUU8mPpA3xK_iD66K1-SH1an6pOysVoOgL0wrIjM91WSNK1udXyXAmLdoMpfxkRWOGOy5dnfLLUo3YswWRNUm-gRMJKSvblyl" alt="uml diagram">
-<p>TODO: ... to be continued...</p>
-<h3 id="use-plantuml-within-a-markdown-document">Use plantUML within a Markdown document</h3>
+<img src="http://www.plantuml.com/plantuml/svg/VOqx3i9034JxdC8b51Iaf40Hv0RX0cPZ9TP-3BPJvFQi4j5GuC8UpOoUEtDKNt9ge8v5BYzKpD0pJlNUH4VIkoHHU2OCyL_jCNE8XSoW_QcPhudgLWxRhorszceEz5we1FgYzYmaD3l3wRgh5YxGoo2PVEOo7OvDHsMif0y0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VOux4i8m34Hxdq8b56au01C8Hu0325ia6Zis8uc2soF2fw10nQhOfrtrQYXscqi07yrShoWumu5nzBrlaaY6Lfh0kM3C_x3Zn35NKeNDa_f1rUw5N8NZqhVOXIu6ra1ud0mI2qNZLb-ciVd5IGa6T7btXM_sBfg_rNLRM7sWTUYf9ez_0000" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VKqx3i8m3DrpYenqvGGLxOh4m0LCOj4eQLBPPgWgxevheGuCU7YMtyUlPm6IrroSr-6SwW84inyJF7LV6aMaePL6_b4Wv7-s-vH2hiZipxlhnygo5bIa5ApFP4cYv510GzzVxiW6eqsqUpFSvqPjGPBr8AueKukdpeYtwx56xVW0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VOv13e8m44NtdcAMi9IbR50yWXSOoY2JbfPq1XDkRoqI4qtiOjhv_wN_Dw8OTPdS0T8Hotx6Y1DS6U_fleJOKso32n4wXyR-msuZ6-j91AeNzOMAhexIZ6noNhQLDObde_nWNVVlDYytsvudKPhXM6yR3r2q8nbRWexaeP35c1HRPlV3LrXdXPmG50Eo-o6wD-5x7lRKCEVsJH9JpoS0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VOun3u9038LtVaN3BWcC3eQ8Yvk3JkfmtbLjEEv8UvZuxpr1C2763cto-lNrbH8KXwwn2SIIcbohM3Mm8NMBS-tP85VUUeQBLRh-X-tlf6k78b2ygHaguManTYRT_-lNWK8KAz-qtg4Bez-m91UGhqeZf3ls3p9euEHWEyefA07Av-n1VdB5npI71HodZsTOGZkO9rFeRvuiMyNBo7I2IOdEnEGl" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VOvD3W8X38NtSmhM9cOYInTcejv0TnCN5HebC61AJPpRMo7-Z36oAFHxhuzscO7uEeH6oSdUnGiG36hhu2JtEf55sgIGI1q36F_FjZyxuoFchFJ3zMNDF0QKIiwK_uhCZWNk61YVMLNePmSrNrLbKKXzlg1-G_tBMQ2aD1_3IuMHQMmdoAPfZpV7hMpVORIovnq0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VOun3i8m34LtJc7r1gt4Y5HHTXRso4aC3KsQAZ53XRWxRY866F1WIy_Vtx_FZ8aVmUz0AazkNZ1XW9F3cynZJ9RI47rCe3sQwP_iCZeppPGpT9lgHvfvzIGzELF-bJKx5dZMTpByCQkRqLa22Wkl42XeIhdoMBLArIEbu5duLbT7thPmWFqtwWGrg4rJyAiQ6O-ITDXwAs5xcgt4UWC0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/VL7BRiCW4BpxArQ-z5IfTcuzH9Rf5rZv0OoHMHdOQC6AylSXeCHE6vN33imECpow42N7rTaAqWWB-hDawU07vPom9vuq2xB4C5gfblza9uDgyJe4QE-gNz8GhrQdogYUUHzRsv4dPPYSXiYhhd8_OanxJkZGpu-i1nQ5igIML1UuO3HmremqGLEQ8th9LwZxZ3N807rkT5yPUi00bYw5QpREu6mAsRuAyuffN4E4UiYOROUzxN1NftUDkjaxRtIxzzxeGw4FVqpAJSah31fgKIOvL-npnVjSyJvNx79VZ_bvXBvhuHjS-aivPxUgqtvAttO3" alt="uml diagram">
+<p>UML Diagrams:</p>
+<ul>
+<li><a href="https://plantuml.com/en/sequence-diagram">Sequence diagram</a></li>
+<li><a href="">Usecase diagram</a></li>
+<li><a href="">Class diagram</a></li>
+<li><a href="https://plantuml.com/en/activity-diagram-beta">Activity diagram</a></li>
+<li><a href="https://plantuml.com/en/component-diagram">Component diagram</a></li>
+<li><a href="https://plantuml.com/en/state-diagram">State diagram</a></li>
+<li><a href="https://plantuml.com/en/object-diagram">Object diagram</a></li>
+<li><a href="https://plantuml.com/en/deployment-diagram">Deployment diagram</a></li>
+<li><a href="https://plantuml.com/en/timing-diagram">Timing diagram</a></li>
+</ul>
+<p>Non-UML Diagrams:</p>
+<ul>
+<li><a href="">Wireframe GUI</a></li>
+<li><a href="">Archimate diagram</a></li>
+<li><a href="">SDL - Specification and Description Language</a></li>
+<li><a href="">Ditaa diagram</a></li>
+<li><a href="">Gantt diagram</a></li>
+<li><a href="">MindMap</a></li>
+<li><a href="">Work Breakdown Structure diagram</a></li>
+<li><a href="">Entity Relationship diagram</a></li>
+</ul>
+<h3 id="usage-of-plantuml-within-a-markdown-document">Usage of plantUML within a Markdown document</h3>
 <p>Within a markdown document a plantUML section is marked with the tags <code>@startuml</code> and <code>@enduml</code>.</p>
 <p>Example:</p>
 <pre class="hljs"><code><div>@startuml
@@ -447,40 +485,30 @@ Class1 &lt;|-- Class2 : Inheritance
 </div></code></pre>
 <p>Result:</p>
 <img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBEIImkDbImgT7LLG2pZHIi53ppCbABCaiIyv9JkHnIyrA02W40" alt="uml diagram">
-<h3 id="formatting">Formatting</h3>
+<div style="page-break-after: always;" />
+<h3 id="basic-syntax">Basic Syntax</h3>
 <ul>
 <li>See also <a href="https://plantuml.com/de/creole">https://plantuml.com/de/creole</a></li>
 </ul>
-<img src="http://www.plantuml.com/plantuml/svg/PP11JiGm34NtFONL3L3KzWeZ8S46Th2kCerdQatYH8ahwErnKpeiQcLX_Hy_V_cKnIIPlQigq7g0boc4Z20JGfqbqRYQDMHPdAe1V4W8O_3HBV1DCfMVNn_la2EETA7H20Kki7mZZYOP_pTznssxX4J5rv2y4I6-mZEy8MCo3kASufeYBopcPu_sEL46VGOU0oCuOdnQetXawJPtrJIMSt16e2jhM0ld1Q8pB9gosrZzFwphkY9fQQjiFpkXmjdHs_f-6-KWkXelia_TIKrp3iuspS7eUnBZQEpxWrNNFd38qOnew_fWjwtUBDpGjkt16uQPBQOrgHs6OYFRag-gJjhgeNy1" alt="uml diagram">
-<pre class="hljs"><code><div>@startuml
+<img src="http://www.plantuml.com/plantuml/svg/VP7HIiKm38RlznHXD-fWA_W41_LIx_HwT6iybgN9Q3F4jpTdvQWmC1GQ_Y_v4zfJKPzrIzI0HLaYhpxx14_Hd-r-a1mmFmf9XedylFnNzleHvuMn5BXlzZgDIWWc5x3Z8TJggjUIcp_uLXY18kCTp98IiWwLNZJuZ4Gm8SGpIyO0qnUiv5dVNfw7wkL-pOPXs2KBIyqxRQHnzxbQr_6kjhAeZSPtlNRzE7NT91IwxW2SY-efpiuTKDicOIchdp6qxG7tVT4i2uQ-Fx1ntDYUyh9f6CST8uTzl-PacVtKDm00" alt="uml diagram">
+<pre class="hljs"><code><div>title This is a diagram title
 
-    ' Choose the &quot;strictuml&quot; style to more comply with the UML specification
-    skinparam style strictuml
+' This is a (one line) comment. This line will be ignored by plantUML.
 
-    title Formatting + General purpose syntax
+/' This is ...
+   ... a multiline comment.
+'/
 
-    ' This is a (one line) comment. This line will be ignored by plantUML.
-
-    /' This is ...
-       ... a multiline comment.
-    '/
-
-    note left
+note left
         This is **bold**
         This is //italic//
         This is &quot;&quot;monospaced&quot;&quot;
         This is --stroked--
         This is __underlined__
-    end note
-
-@enduml
+end note
 </div></code></pre>
-<img src="http://www.plantuml.com/plantuml/svg/RO_13O0W34NldQAZC84xOAX20jJ0TtyHIKp4Njh_-dgegR05Puf428Z2Yq8gKMwDesmWRjMJ1SC_a6jmGf9TtmoxXDtFUgU__gg0fkbWu8yCFIRpPgzcsjZ-k000" alt="uml diagram">
-<pre class="hljs"><code><div>@startuml
-
-title Notes
-
-note left
+<img src="http://www.plantuml.com/plantuml/svg/VP3D3SCm24RlcO8PEa7KTeGkG68QM_uX0hf_BQf6ELZX0doFTs5MGx5FBHFqqfpQZe8LdWcttkyiWUJ1XGMMWck-Edl5jEP6gd2R_Awn4HHwcsz7WWOMVm0q1N9ABJWzcPAsE5QTNBeBct4ToYSq48tteVNF3sNkK__R5m00" alt="uml diagram">
+<pre class="hljs"><code><div>note left
     note at the left side
 end note
 
@@ -495,14 +523,12 @@ end note
 note top
     note at the top
 end note
-
-@enduml
 </div></code></pre>
 <div style="page-break-after: always;" />
-<h2 id="uml-diagrams-uml-25">UML Diagrams (UML 2.5)</h2>
+<h2 id="uml-diagrams">UML Diagrams</h2>
 <ul>
 <li>The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use <code>skinparam style strictuml</code>.</li>
-<li>To get non-colored diagram the setting <code>skinparam monochrome true</code> can be used.</li>
+<li>To get a non-colored diagram <code>skinparam monochrome true</code> can be used.</li>
 </ul>
 <h3 id="class-diagram">Class Diagram</h3>
 <p>See also:</p>
@@ -517,26 +543,53 @@ end note
 <img src="http://www.plantuml.com/plantuml/svg/XO_D3e8m3CVlF4N3qGGIhyO3QlJeEvHHP86jf2jHtjuneWT3OWzDFtxjlws2ekZaXWoYXTxw4GKTc053kB7NEpg22_l0iR85dLJ5rfFIFzhp5fEWpZO4v4QTmP6hITRPWLe5PH3xw1GQAsJKil_P6tGUA7gn9ZsIscVc7l9zMUvoA8fFT9gqOpd04PuIhqdaSjQgaDB5hYzqOzpPiW1wY4-oiVYL9j-agQoAKLHy0m00" alt="uml diagram">
 <img src="http://www.plantuml.com/plantuml/svg/ZP0_2y8m4CNtVeeZamQrwEXK4PpKpRcaxQd1_2d9EVZjJT9IgYZwXX3U_UxoSeKduUYkLGP1_YPDAvpGK2lX_SuQEWgDiBN6s-1yWZP4JbPtmb-qiP-O15rbWu2wfGTer1MwhbVXcO0iE7cv4ZJIOKtIchUvdXuAm-badJwIoYdQ4jYImNmEZBFEMQNYfAlEUcyAYmMmZVUsbY8-i8qsIsXKkiJqVH1x7W-BuhmiXpqqC1fLbfmFMAk4eTDXlnwSe3p_bZNFNxd_OlTTQ9gKEIl2BQpb2G00" alt="uml diagram">
 <h4 id="dependency">Dependency</h4>
-<img src="http://www.plantuml.com/plantuml/svg/XL31QiCm3BttAtJEeM4zzX0wLWQ3jhUUWvEehPbj1KivvE-hAbjWMqQ5aONUUvQUTomkon332ZJuqwVUPHUX3OxvdPASN4HueyIadINIgqZspI3uZ9reYMEac-yGCFOoGiJOO9wq0Iy2Gf3zzIRG-OojU4g_tcKP0shElZKZ1jjgBx1ULrEvWIqCZ0oLmPOU2q538XI1BbyIGnwnnnvJfySwUXj_zQzoCoi_LFP4EpdwAosAkluUt8vrNHGpr0UNv7myREUEHbak6Pt6Cr22gYn_xh3JId_f3W00" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/XL1D2y8m3BtxAtBUmQ573w8eWg3UF8zkYrficz5cX_rxOwO3lp2KDEIzr-HraTX4RhqRWKIwsj2OQ3nKpgIqeS07un5M5199vnjfoHnjsJB-OmVwnb7InTO8w1lkmAClCVPQXoS69eZsV66eRSIABOMtTnDt3YL7MwaHXNMr2Op7yxwSmWpQX0dc2ckwBmGbCPC7EZqaYjnZZGs6Mevsv5R-wAToEYYt8lkZxHrzIhEiA9w3gwueico06cS27_UxsT2HoFFVHlFyTVf2AlcV6m00" alt="uml diagram">
 <h4 id="aggregation">Aggregation</h4>
-<img src="http://www.plantuml.com/plantuml/svg/XL312i8m3Btx5JaFvj2ZU9W8djIRvr6tk0NRTBGPwD_RTJf42hv3IDkNz_9QUb5E1gCN4E3lnBrooa2jbVS7ot9M1c5lsTjmaoBjH1nT1y5_RBOfJYHrr22WwUK91iqLtJIhyIOW5XordK133ciXop-wNfuQGtLKpq5YYUkj8C_jrAvX0rleFgRZFfDqF8x8ighQjQt3Ler6LPLbyzk8_AD97eAvWBszfPTfNgqOy45UWBZ17aFXv5Il5SlbTDnywnH5AiBNWaKHwK4sfbcKeGjVy080" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/XK_12i8m3Btx5JaFvj2ZU9W8djIRvr6tR0kswMWZwD_RTMw8J7o7aBGlx-NbNfIJkz4B2F0tuauvPQ3Kolk3PJahWx2tx6rucIFjH1nTxuB_s6pdE97KKeM0ffCd63HNTCEknbf0B3XgMe6A79P2bhzqlJmrXkged8B44izRGPhQeLt31hRGZgRzFODq77iaIL7iciPXetgZeaYIwQz7EcgIXs0kOEktz7AULoe6V90N8Awmmr1uTglJYkLoEcu-TRBiPuGiYyGW67Ciyj25y2y0" alt="uml diagram">
 <h4 id="composition">Composition</h4>
-<img src="http://www.plantuml.com/plantuml/svg/XL1DJyCm3BtlL_WSAKHmd3WCJUB4k76kijQZ5ebT9Qx6_ZrfMiO4bV31SfBdzv5TLfzqZ643fV87yU2JZz06d_EpiBxwYB0Npb9kra1FgecEe-9_Q9OrJ0Nrr25W7FG24UCHqxmRyAIW0edUUuME4hPAmhzuiru2bfwelGQfhTgx1slDF3x05Xv1phoeJePcxdgSofYcsKiS9DEar3J6ND-cij-abA6eAyXfuRvRnxMUmRcYv1pW9sM5Csale_vP6u9dVJkyR6-9d5juZBK_8MuSEbVXo5sDizcLgNp25m00" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/XK_1QiCm3BttAtGsU6OxbXqw2Zjjk-qSt4HTn6mfs0fj_xwEavNH1VOEGhAVtjFRPVL9nnWsK92_YGUVV8Gs-9nVXVN3HuIzS9RoiaPwKKrq61N_OxEiSIgffmu1uw0NY1WFcERTW4S55KZqrIjqbB1L4hxJpNe9M6gYzXQabdhU8rXhvlO9jl0CSkB5TJfergxZ16EQPYzna4oJKzCOS_kRO7z4AKDnLv3ZelsmpcizWtF5oJd0CsM54sale_vP6u9d_Nn_s_uMScxHCTRUXt2kCf6xccIpArt9VmK0" alt="uml diagram">
 <h4 id="inheritance">Inheritance</h4>
-<img src="http://www.plantuml.com/plantuml/svg/XP31QiCm38RlVGhHIo4GGdiiFNGC1eDjjvs3cwYBc2q7MOKMzl1rxH1AQvWEHjR__RBaVL0ZUd9s0J72B_5en3Zeh0dXpRD-6OVmwZduM2b1Bwf2XvFYVpJx4fEWrK0z0hfHB-3G7L2oUMNngA0UX7u6XPu4EoNF3vs3NYp6KwXBgoGv3RU6tLzTvtm3MRZDaHkcwosggctVUK0XDTnXsrRLh07Ki9mQK6O27CLFww-NHHBFYjo79sPEHcjOlpy_jd3dXwPv7hjfPiBBja13ySt95YjfuyK-Pl5phW00" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/XP1DYm8n38Rl_ehWSM0OtAFiGH44GVVcUQWpSIVOfaCQGM5__DPMXaKBcqF9n_FcewkWHlJgx0oYXGlnQCGuwAm9OUjPlun3s7WEFcPAq5fLw7HL_8zcNs8ID52FW6xKEpXq9vIijNXMK0z2tuD2JuATakUNla7l5kChrAL3KZcjje3FdxhE_aVEFvR8_LBuiAfgsnqFAAI6EspRgffg03NCinueCm7Euf-tB-P54c-At8StPd96QrYFX_qI_kYXQTwtRfg9yB8iq52S-PJ5JBeu1RDL3EC7_G80" alt="uml diagram">
 <h4 id="interface-realization-interface-inheritance">Interface Realization (Interface Inheritance)</h4>
-<img src="http://www.plantuml.com/plantuml/svg/ZP5DQyCm38Rl_HMYbq9W3TcnxD0n60os7GOx1pTH5b5_15azTEp7px5BbWoNJGSZMuzUVNZlHR6SZ5v1C7yaEoXM1Xgjl7zqLbwLGNXmrhlmaeFkHPWE9y6_QEjoJ8GsFRK8Q0OvWq5pG4x96usTW3XW-kW5Mc9iX9pzfUpbh36SJ4qS9OR92dAd6lpngcMWWhklxJPDSPkInXulnU9zjAAewwT9x0sLfayrTb7NHJ5Hezt0Eea1cK6ZGIj-Lcvz1UOeYVz1oVR855GxTYRBJywWbPNtb-STpBNAChUNihp2B5OqenplbXcHI5oLd_wIZRQDMrxjWnS-wni0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/ZP5DQyCm38Rl_HMYny0QqcFPeMCm66mx57OERg8ielu8idhes8-VOvSi6IwR3aQs7htwyDwBOZaRlO9W_aHsKAmCD5fv_-Iil2c3yEYiT-4b1ps8C1tFWd_HrkMO2FNK8g0Pv086pH4vvMhi1CG1qqSlq19Z8-JiBrql5utXP6hY835CLf0xrU2FLoq35Tn_RJPfXcrA6Zky5eltqOgYhfydiGCgJPzgxAAkYsAYHhk3TH83CeD6WrRyhDpw1inH4l-3aksHAQXsx4oMdvn1Aollhoyxc6kLPMulPNc3MQneHZdUBJCYaRWgF_qr6sqRjxpQ1ozyrZS0" alt="uml diagram">
 <div style="page-break-after: always;" />
 <h3 id="activity-diagram-flow-chart">Activity Diagram (Flow Chart)</h3>
 <p><a href="http://plantuml.com/activity-diagram-beta">plantUML: NEW Activity Diagram Syntax</a></p>
-<img src="http://www.plantuml.com/plantuml/svg/LP11Qy9048NlyolUCPwqhVQGN4mrOa2CD4BFmOvcOBCRah7Yl--wMDZERTvyxpsOvQZDeDVEa8eQJf6VL7v4xrXBSncQ3bDiZBjXrNgEAE14rYbZa4khAMhNCHu2KLehzxCNgldax3UCMCw8v8maG0zHL9oTG5ksIEuyJWX-WZ7FYCt8IAoBr0-lUjlvB_tL9zvQCPxxsfQx0hkgEgHOLVjrUIohVMITlMNHCWz1mKeqSC-DHjT5ZBvdJm3Ffi_YKEH7XC9_NVuXhYTQ-cJ_n5y0" alt="uml diagram">
-<h4 id="connector--detach">Connector &amp; Detach</h4>
-<img src="http://www.plantuml.com/plantuml/svg/9Sqn3eCm34RXtQVm25DRnh20g7g1dY0A5h4KOfJ-jEhjYM3_djxmWI_OrqHG974y1kXNyUUd-gNubM_yIlRZALR7JTSIdGcvDsIxFtfgnfPcWG-Hia6uw1BXUBAS9S0AdUBYNLzhssYGFDVf0G00" alt="uml diagram">
-<h4 id="grouping-partitions">Grouping (partitions)</h4>
-<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuIh9BCb9LN0loYyjoCnBvmABSnK0YSoIpFmyY8HXDPS245W5bwGM61XQ8t6ChBbgqLKR8QisHbPj0b9TN99VmEMGcfS2j1q0" alt="uml diagram">
-<h4 id="detach">Detach</h4>
-<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuIh9BCb9LN1n3N5qzk3YiWABMtEbvHTbSoa0WLLQVhwXDPnf195II4nFpCo3Ynf35AIabYGcPt2bvgM0jNDbfYbe06LDD1LACb8HgatHLMUc0Iq6IfXPSt51HK5SSskkufBy0Yuk1w0Qe5C1" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/dLJBRiCW4BpxAxWrERdlGtn9cgfIf3OvfFq0OgzhL0m8DghozyNOTKsC7RbxGC3kpCwi44k3LEEnv16nSMM-c51KqvAad1hp8WLkQGbaBOMHzYPOjKBKx71429V_LGiPggav2vO1WLBXYPHG7a0tlJZaI50IpJuB91dJa2AJubo8mHC7ksgMEZTrvygRsrMTQmfth2AE5QS2FzvU5t7Stlem49c3rdIBFOAwlaccCtf8dvJbPBRURPytxvlTTawm045c9p3po0El6YmtG6P2dcMVMcQMJrTtMK98oc_q9OMajTMjnD1iRzr-3wcqISu4J9zrbwY97f_V-hjWzkbq9j1Y0tt79pbErtyHTyb8yhwVjC8TVTIvg9qCydfS7juj6XHGz1nFy7g6xdju63Fuc0mGZiomPpWQREWr6ILkFWkf_lDNDAXMsDBkx0_q0m00" alt="uml diagram">
 <div style="page-break-after: always;" />
+<h4 id="connector--detach">Connector &amp; Detach</h4>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuG8pkAo2Ir8B30ojkJGSDRbIKaiIapEuyl9BKXMACjCpIgmKdFFpybAJI_ABkC0g8CgDh86wymku75BpKe160G00" alt="uml diagram">
+<h4 id="grouping-partitions">Grouping (partitions)</h4>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuG8pk0g0H6P9PdwUWdjHVcc1OJMN0X1O1PUa5XWOMYDnZAovQj5L6o6hDaPMRG9INLoINy3ba9gN0hGE0000" alt="uml diagram">
+<h4 id="detach">Detach</h4>
+<img src="http://www.plantuml.com/plantuml/svg/NOvB3e0W34JtSmgMklIVmCQh404bVZ1Qxo-8mSIkflDUa_OdoOEkTG5_ae1nnmpcXnld2f5Y6H6JexHRQgieA4rocA0tzPp36fPvMkUC9ltPpT-s1WYW5S3RXhKJECdjGEyT_zmD" alt="uml diagram">
+<h3 id="plantuml-formatting--styles">plantUML formatting / styles</h3>
+<h4 id="border-around-the-diagrams">Border around the diagrams</h4>
+<pre class="hljs"><code><div>@plantuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    ...
+</div></code></pre>
+<h4 id="black-white-diagrams">Black White diagrams</h4>
+<pre class="hljs"><code><div>@plantuml
+    skinparam monochrome true
+    ...
+</div></code></pre>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuL80WkBipBo2nAB4N8NS_Bpyv8oY_DnKXPAYqbImR79EOd6nWZE8DEHoICrB0Me30000" alt="uml diagram">
+<h3 id="uml-compliant-appearance">UML compliant appearance</h3>
+<p>The default style of plantUML does not completely match the official UML definition. To change the style to comply as far as possible with the official UML defintion, set the <code>strictuml</code> style.</p>
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuL80WkISnE9Y1MSGQGWMoCilILKeoapFA05pGQ0W9p6l9DJNnmek0WBw-iXwzVN1agbvAM0Jk1o0BA0T0000" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuL80WkBipBo2nAB4N8NYaigSL21Pb9aCbqtEIImkLd06aOPWWRpyabI5eipqZ18m5mGASXBpIa9zVQpW8Y2Whu_JP7rzD9N8ja0bK_DIm7PnEG1PG3q0" alt="uml diagram">
+<img src="http://www.plantuml.com/plantuml/svg/TKun2iCm3Dpp2irUJDTEWQxDs0SeYMXCBCT8wf3VrpObb8RUS4XtGdUz6egzE7PGe6j86GKPrFP8XILCXxk4cO0usmvCF99eawU8gd2hV6b2sen0mdEnjbRaYCaUm_rwA1NU_mtq_kVIkNEySwUpxp8VazBSAdLzcShhDm00" alt="uml diagram">
+<h3 id="together">together</h3>
+<p>To influence how multiple classes are arranged in large diagrams, the ´Together{}´ keyword can be used:</p>
+<pre class="hljs"><code><div>Together{
+    class A
+    class B
+}
+</div></code></pre>
+<div style="page-break-after: always;" />
+<h2 id="non-uml-diagrams">Non-UML Diagrams</h2>
 <h3 id="mindmap-diagram">MindMap Diagram</h3>
 <h4 id="basic-mindmap-syntax">Basic MindMap syntax</h4>
 <p>@startmindmap</p>
@@ -549,8 +602,8 @@ end note
 </ul>
 <p>left side</p>
 <p>** left side node
-** second
-@endmindmap</p>
+** second</p>
+<p>@endmindmap</p>
 <p>@startmindmap</p>
 <ul>
 <li>Root Node
@@ -562,8 +615,8 @@ end note
 @endmindmap</li>
 </ul>
 <h4 id="headers-etc">Headers etc.</h4>
-<p>@startmindmap
-header My Header
+<p>@startmindmap</p>
+<p>header My Header
 title My Title</p>
 <ul>
 <li>one
@@ -604,11 +657,11 @@ center footer My Footer
 <li>&lt;&amp;graph&gt; &lt;&amp;graph &gt;</li>
 <li>&lt;&amp;pulse&gt; &lt;&amp;pulse &gt;</li>
 <li>&lt;&amp;people&gt; &lt;&amp;people &gt;</li>
-<li>&lt;&amp;star&gt; &lt;&amp;star &gt;
-@endmindmap</li>
+<li>&lt;&amp;star&gt; &lt;&amp;star &gt;</li>
 </ul>
 </li>
 </ul>
+<p>@endmindmap</p>
 
 </body>
 </html>
