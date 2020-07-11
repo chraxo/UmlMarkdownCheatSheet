@@ -1,17 +1,22 @@
-# UML & Markdown
+# UML & Markdown Summary
 
-<!-- Hint: use Visual Studio Code with packages *plantUML* and *Markdown PDF*  -->
+<!-- 
+    Hint for editing: Use *Visual Studio Code* together with the plugins
+    *plantUML*,
+    *Markdown All in One* and
+    *Markdown PDF*
+-->
 
 ## Table of Contents
 
-- [UML & Markdown](#uml--markdown)
+- [UML & Markdown Summary](#uml--markdown-summary)
   - [Table of Contents](#table-of-contents)
   - [Links & Sources](#links--sources)
-  - [TODO](#todo)
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
-    - [Use plantUML within a Markdown document](#use-plantuml-within-a-markdown-document)
-  - [UML Diagrams (UML 2.5)](#uml-diagrams-uml-25)
+    - [Usage of plantUML within a Markdown document](#usage-of-plantuml-within-a-markdown-document)
+    - [Basic Syntax](#basic-syntax)
+  - [UML Diagrams](#uml-diagrams)
     - [Class Diagram](#class-diagram)
       - [Class Notation](#class-notation)
       - [Association](#association)
@@ -24,6 +29,12 @@
       - [Connector & Detach](#connector--detach)
       - [Grouping (partitions)](#grouping-partitions)
       - [Detach](#detach)
+    - [plantUML formatting / styles](#plantuml-formatting--styles)
+      - [Border around the diagrams](#border-around-the-diagrams)
+      - [Black White diagrams](#black-white-diagrams)
+    - [UML compliant appearance](#uml-compliant-appearance)
+    - [together](#together)
+  - [Non-UML Diagrams](#non-uml-diagrams)
     - [MindMap Diagram](#mindmap-diagram)
       - [Basic MindMap syntax](#basic-mindmap-syntax)
       - [Headers etc.](#headers-etc)
@@ -40,19 +51,9 @@
 * [UML Quick Reference: nomagic.com](https://www.nomagic.com/support/quick-reference-guides)
 * [UML Notation Overview (German): oose.de](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
 * [Markdown Syntax: commonmark.org](https://commonmark.org/help/)
-* [plantUML: plantuml.com](https://plantuml.com/en/)
+* [plantUML.com](https://plantuml.com/en/)
 * [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
-
-## TODO
-
-Notes:
-```
-' Helps sorting the classes:
-Together{
-    class A
-    class B
-}
-```
+* [Hyperlinks in plantUML](https://plantuml.com/de/link))
 
 ## plantUML Introduction
 
@@ -61,35 +62,171 @@ Together{
 @startuml
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
-
     skinparam style strictuml
 
     title Sequence Diagram
 
     class1 -> class2 : DoSomething()
 @enduml
-
 @startuml
     skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2
-    skinparam Shadowing false
-
+    skinparam DiagramBorderThickness 2    
     skinparam style strictuml
 
     left to right direction
 
     title Use Case Diagram
     
-    Actor1 --> (Use Case)
+    Actor --> (Use Case)
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+
+    title Class Diagram
+    
+    class Class
+    {
+        Property
+        Method()
+    }
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+
+    title Activity Diagram
+
+    start
+
+    :step 1;
+
+    if (Check) then (success)
+        :step 2a;
+    else (fail)
+        :step 2b;
+    endif
+
+    stop    
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+
+    title Component Diagram
+
+    interface "Provided \n Interface" as i1
+    interface "Used \n Interface" as i2
+
+    i1 - [Component] : provide
+    
+    Component ..> i2 : use
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+
+    title State Diagram
+
+    [*] -> State1
+    State1 -> State2
+    State2 -> State1
+    State2 -> [*]
+
+    State1: entry/
+    State1: do/
+    State1: exit/  
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+
+    title Object Diagram
+
+    hide empty members
+
+    object __Object__ {
+        field1 = 5
+        field2 = "abc"
+    }
+
+    class Class1  
+@enduml
+@startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2    
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title Timing Diagram Diagram
+
+    clock clk with period 1
+
+    binary "Binary" as B
+    @0
+    B is low
+    @1
+    B is high
+    @2
+    B is low
+
+    robust "Robust" as R
+    @0
+    R is state1
+    @1
+    R is state2
+    @2
+    R is state3
+    @3
+    R is state1
+
+    concise "Concise" as C
+    @0
+    C is state1
+    @1
+    C is state2
+    @2
+    C is state3
+
+    @1
+    R -> B@2 : message1
+  
 @enduml
 
-TODO: ... to be continued... 
+UML Diagrams:
 
-### Use plantUML within a Markdown document
+* [Sequence diagram](https://plantuml.com/en/sequence-diagram)
+* [Usecase diagram]()
+* [Class diagram]()
+* [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
+* [Component diagram](https://plantuml.com/en/component-diagram)
+* [State diagram](https://plantuml.com/en/state-diagram)
+* [Object diagram](https://plantuml.com/en/object-diagram)
+* [Deployment diagram](https://plantuml.com/en/deployment-diagram)
+* [Timing diagram](https://plantuml.com/en/timing-diagram)
+
+Non-UML Diagrams:
+
+* [Wireframe GUI]()
+* [Archimate diagram]()
+* [SDL - Specification and Description Language]()
+* [Ditaa diagram]()
+* [Gantt diagram]()
+* [MindMap]()
+* [Work Breakdown Structure diagram]()
+* [Entity Relationship diagram]()
+
+### Usage of plantUML within a Markdown document
 
 Within a markdown document a plantUML section is marked with the tags `@startuml` and `@enduml`.
 
 Example:
+
 ```{.md}
 @startuml
 Class1 <|-- Class2 : Inheritance
@@ -97,20 +234,22 @@ Class1 <|-- Class2 : Inheritance
 ```
 
 Result:
+
 @startuml
 Class1 <|-- Class2 : Inheritance
 @enduml
 
-### Formatting
+<div style="page-break-after: always;" />
+
+### Basic Syntax
 
 * See also [https://plantuml.com/de/creole](https://plantuml.com/de/creole)
 
 @startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
 
-    ' Choose the "strictuml" style to more comply with the UML specification
-    skinparam style strictuml
-
-    title Formatting + General purpose syntax
+    title This is a diagram title
 
     ' This is a (one line) comment. This line will be ignored by plantUML.
 
@@ -125,61 +264,48 @@ Class1 <|-- Class2 : Inheritance
         This is --stroked--
         This is __underlined__
     end note
-
 @enduml
 
 ```{.md}
-@startuml
+title This is a diagram title
 
-    ' Choose the "strictuml" style to more comply with the UML specification
-    skinparam style strictuml
+' This is a (one line) comment. This line will be ignored by plantUML.
 
-    title Formatting + General purpose syntax
+/' This is ...
+   ... a multiline comment.
+'/
 
-    ' This is a (one line) comment. This line will be ignored by plantUML.
-
-    /' This is ...
-       ... a multiline comment.
-    '/
-
-    note left
+note left
         This is **bold**
         This is //italic//
         This is ""monospaced""
         This is --stroked--
         This is __underlined__
-    end note
-
-@enduml
+end note
 ```
 
 @startuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
 
-title Notes
+    note left
+        note at the left side
+    end note
 
-note left
-    note at the left side
-end note
+    note right
+        note at the right side
+    end note
 
-note right
-    note at the right side
-end note
+    note bottom
+        note at the bottom
+    end note
 
-note bottom
-    note at the bottom
-end note
-
-note top
-    note at the top
-end note
-
+    note top
+        note at the top
+    end note
 @enduml
 
 ```{.md}
-@startuml
-
-title Notes
-
 note left
     note at the left side
 end note
@@ -195,16 +321,14 @@ end note
 note top
     note at the top
 end note
-
-@enduml
 ```
 
 <div style="page-break-after: always;" />
 
-## UML Diagrams (UML 2.5)
+## UML Diagrams
 
 * The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use `skinparam style strictuml`.
-* To get non-colored diagram the setting `skinparam monochrome true` can be used.
+* To get a non-colored diagram `skinparam monochrome true` can be used.
 
 ### Class Diagram
 
@@ -329,7 +453,7 @@ See also:
     note right of class2
         **__Dependency__**
         plantUML:
-           //class1 ..> class2 : depends on >//
+           //class1 ..> class2 : uses >//
     end note
 @enduml
 
@@ -350,7 +474,7 @@ See also:
             - class1 is part of class2.
             - class1 can exist independent of class2.
         plantUML:
-           //class1 --o class2 : Aggregation//
+           //class1 --o class2 : < has//
     end note
 @enduml
 
@@ -371,22 +495,23 @@ See also:
             - class1 is part of class2.
             - class1 can //not// exist without class2.
         plantUML:
-           //class1 *-- class2 : Composition//
+           //class1 *-- class2 : < owns//
     end note
 @enduml
 
 
 #### Inheritance
+
 @startuml
     skinparam classFontName Consolas
     skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
 
-    'hide empty members
-    'left to right direction
+    hide empty members
+    left to right direction
     skinparam style strictuml
 
-    class1 <|-- class2 
+    class1 <|-- class2
 
     note right
         **__Inheritance__**
@@ -398,6 +523,7 @@ See also:
         or:
            //class class2 extends class1//
     end note
+    
 @enduml
 
 #### Interface Realization (Interface Inheritance)
@@ -406,8 +532,8 @@ See also:
     skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
 
-    'hide empty members
-    'left to right direction
+    hide empty members
+    left to right direction
     skinparam style strictuml
 
     interface interface1
@@ -442,20 +568,16 @@ See also:
     'left to right direction
     'skinparam style strictuml
 
-    title: Activity Diagram / Flow Chart
-
     start
     note right
         //plantUML://
             start
     end note
 
-    :Step01
-    Second line;
+    :Step01;
     note right
         //plantUML://
-            :Step01
-            Second line;
+            :Step01;
     end note
 
     if (CONDITION) then (yes)
@@ -472,10 +594,12 @@ See also:
             endif
     end note
 
-    :Step02;
+    :Step02
+    Second line;
     note right
         //plantUML://
-           :Step02;
+           :Step02
+           Second line;
     end note
 
     while (CONDITION)
@@ -510,11 +634,11 @@ See also:
     end note
 @enduml
 
+<div style="page-break-after: always;" />
+
 #### Connector & Detach
 
 @startuml
-title: Activity Diagram / Flow Chart (2)
-
 start
 :Step01;
 (A)
@@ -529,7 +653,6 @@ stop
 #### Grouping (partitions)
 
 @startuml
-title Grouping
 start
 partition Group1{
     :Step01;
@@ -545,8 +668,6 @@ stop
 #### Detach
 
 @startuml
-title DETACH
-
 :start;
 fork
     :foo1;
@@ -569,12 +690,85 @@ stop
 
 @enduml
 
+### plantUML formatting / styles
+
+#### Border around the diagrams
+
+```
+@plantuml
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    ...
+```
+
+#### Black White diagrams
+
+```
+@plantuml
+    skinparam monochrome true
+    ...
+```
+
+@startuml
+    skinparam monochrome true
+    class Class1
+@enduml
+
+### UML compliant appearance
+
+The default style of plantUML does not completely match the official UML definition. To change the style to comply as far as possible with the official UML defintion, set the `strictuml` style.
+
+@startuml
+    class Class1
+    note right
+        plantUML:
+            //class Class1//
+    end note
+@enduml
+
+@startuml
+    skinparam style strictuml
+    class Class1
+    note right
+        plantUML:
+            //skinparam style strictuml//
+            //class Class1//
+    end note
+@enduml
+
+@startuml
+    skinparam style strictuml
+    hide empty members
+    class Class1
+    note right
+        plantUML:
+            //skinparam style strictuml//
+            //**hide empty members**//
+            //class Class1//
+    end note
+@enduml
+
+### together
+
+To influence how multiple classes are arranged in large diagrams, the ´Together{}´ keyword can be used:
+
+```
+Together{
+    class A
+    class B
+}
+```
+
 <div style="page-break-after: always;" />
+
+## Non-UML Diagrams
 
 ### MindMap Diagram
 
 #### Basic MindMap syntax
+
 @startmindmap
+
 * Root node
 '* A second root node is not allowed
 ** Node
@@ -585,9 +779,11 @@ left side
 
 ** left side node
 ** second
+
 @endmindmap
 
 @startmindmap
+
 + Root Node
 ++ Alternative notation with ++
 -- '--' Chooses the left side
@@ -597,7 +793,9 @@ left side
 @endmindmap
 
 #### Headers etc.
+
 @startmindmap
+
 header My Header
 title My Title
 
@@ -617,6 +815,7 @@ center footer My Footer
 #### Markdown compliant
 
 @startmindmap
+
 * **Markdown syntax**
 	* indented by **TAB**
 	* intention by space\n is currently not possible
@@ -628,6 +827,7 @@ center footer My Footer
 #### Symbols
 
 @startmindmap
+
 * Symbols
 	* <&flag> <&flag >
 	* <&globe> <&globe >
@@ -635,4 +835,5 @@ center footer My Footer
 	* <&pulse> <&pulse >
 	* <&people> <&people >
 	* <&star> <&star >
+
 @endmindmap
