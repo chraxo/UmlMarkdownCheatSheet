@@ -12,6 +12,8 @@
 - [UML & Markdown Summary](#uml--markdown-summary)
   - [Table of Contents](#table-of-contents)
   - [Links & Sources](#links--sources)
+  - [Markdown Syntax](#markdown-syntax)
+      - [Page break](#page-break)
   - [plantUML Introduction](#plantuml-introduction)
     - [Available Diagrams](#available-diagrams)
     - [Usage of plantUML within a Markdown document](#usage-of-plantuml-within-a-markdown-document)
@@ -54,6 +56,15 @@
 * [plantUML.com](https://plantuml.com/en/)
 * [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
 * [Hyperlinks in plantUML](https://plantuml.com/de/link))
+
+## Markdown Syntax
+
+Special:
+
+#### Page break
+```
+<div style="page-break-after: always;" />
+```
 
 ## plantUML Introduction
 
