@@ -399,8 +399,8 @@ See also:
     note right 
         **__Association__**
             - "class1 and class2 are associated"
-            - "The relation consists of **1** object of class1 
-               and * objects of class2"
+            - "The relation consists of 1 object of class1 
+               and any number of objects (0 .. ∞) of class2"
         plantUML:
            //class1 "1" -- "*" class2//
     end note
@@ -418,6 +418,9 @@ See also:
     Book "1..*" -- "1..*" Author: < wrote
     note right
         Example for an association
+        
+        plantUML:
+            //Book "1..*" -- "1..*" Author: < wrote//
     end note
 @enduml
 
