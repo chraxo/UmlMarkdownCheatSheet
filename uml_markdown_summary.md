@@ -348,11 +348,14 @@ See also:
 
     class ClassName
     {
+        ' {field} is used to explicitely mark a field, that contains () braces,
+        ' so that it is not interpreted as a method.
+
         field1 : Type = DefaultValue
-        {field} -field2 : Type     //(private)//
-        {field} #field3 : Int32    //(protected)//
-        ~method1() : ReturnType  //(internal)//
-        +method2() : string      //(public)//
+        {field} -private_field   : Type   //(private)//
+        {field} #protected_field : Int32  //(protected)//
+        ~internalMethod() : ReturnType //(internal)//
+        +publicMethod()    : string    //(public)//
     }
 
     note right
@@ -360,14 +363,11 @@ See also:
            class ClassName
            {
                field1 : Type = DefaultValue
-               {field} -field2 : Type     //(private)//
-               {field} #field3 : Int32    //(protected)//
-               ~method1() : ReturnType  //(internal)//
-               +method2() : string      //(public)//
+               -private_field    : Type
+               #protected_field  : Int32
+               ~internalMethod() : ReturnType
+               +publicMethod()    : string
            }
-
-        hint: {field} is used to mark attributes, 
-              which contain () braces.
     end note
 
 @enduml
