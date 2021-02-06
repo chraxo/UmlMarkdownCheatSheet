@@ -15,10 +15,12 @@
   - [Markdown Syntax](#markdown-syntax)
       - [Page break](#page-break)
   - [plantUML Introduction](#plantuml-introduction)
-    - [Available Diagrams](#available-diagrams)
     - [Usage of plantUML within a Markdown document](#usage-of-plantuml-within-a-markdown-document)
     - [Basic Syntax](#basic-syntax)
+    - [Available Diagrams](#available-diagrams)
   - [UML Diagrams](#uml-diagrams)
+    - [Sequence Diagram](#sequence-diagram)
+    - [Usecase Diagram](#usecase-diagram)
     - [Class Diagram](#class-diagram)
       - [Class Notation](#class-notation)
       - [Association](#association)
@@ -28,9 +30,11 @@
       - [Inheritance](#inheritance)
       - [Interface Realization (Interface Inheritance)](#interface-realization-interface-inheritance)
     - [Activity Diagram (Flow Chart)](#activity-diagram-flow-chart)
-      - [Connector & Detach](#connector--detach)
-      - [Grouping (partitions)](#grouping-partitions)
-      - [Detach](#detach)
+    - [Component Diagram](#component-diagram)
+    - [State Diagram](#state-diagram)
+    - [Object Diagram](#object-diagram)
+    - [Deployment Diagram](#deployment-diagram)
+    - [Timing Diagram](#timing-diagram)
     - [plantUML formatting / styles](#plantuml-formatting--styles)
       - [Border around the diagrams](#border-around-the-diagrams)
       - [Black White diagrams](#black-white-diagrams)
@@ -67,170 +71,6 @@ Special:
 ```
 
 ## plantUML Introduction
-
-### Available Diagrams
-
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2
-    skinparam style strictuml
-
-    title Sequence Diagram
-
-    class1 -> class2 : DoSomething()
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    left to right direction
-
-    title Use Case Diagram
-    
-    Actor --> (Use Case)
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    title Class Diagram
-    
-    class Class
-    {
-        Property
-        Method()
-    }
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    title Activity Diagram
-
-    start
-
-    :step 1;
-
-    if (Check) then (success)
-        :step 2a;
-    else (fail)
-        :step 2b;
-    endif
-
-    stop    
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    title Component Diagram
-
-    interface "Provided \n Interface" as i1
-    interface "Used \n Interface" as i2
-
-    i1 - [Component] : provide
-    
-    Component ..> i2 : use
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    title State Diagram
-
-    [*] -> State1
-    State1 -> State2
-    State2 -> State1
-    State2 -> [*]
-
-    State1: entry/
-    State1: do/
-    State1: exit/  
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-
-    title Object Diagram
-
-    hide empty members
-
-    object __Object__ {
-        field1 = 5
-        field2 = "abc"
-    }
-
-    class Class1  
-@enduml
-@startuml
-    skinparam DiagramBorderColor black
-    skinparam DiagramBorderThickness 2    
-    skinparam style strictuml
-    'skinparam monochrome true
-
-    title Timing Diagram Diagram
-
-    clock clk with period 1
-
-    binary "Binary" as B
-    @0
-    B is low
-    @1
-    B is high
-    @2
-    B is low
-
-    robust "Robust" as R
-    @0
-    R is state1
-    @1
-    R is state2
-    @2
-    R is state3
-    @3
-    R is state1
-
-    concise "Concise" as C
-    @0
-    C is state1
-    @1
-    C is state2
-    @2
-    C is state3
-
-    @1
-    R -> B@2 : message1
-  
-@enduml
-
-UML Diagrams:
-
-* [Sequence diagram](https://plantuml.com/en/sequence-diagram)
-* [Usecase diagram]()
-* [Class diagram]()
-* [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
-* [Component diagram](https://plantuml.com/en/component-diagram)
-* [State diagram](https://plantuml.com/en/state-diagram)
-* [Object diagram](https://plantuml.com/en/object-diagram)
-* [Deployment diagram](https://plantuml.com/en/deployment-diagram)
-* [Timing diagram](https://plantuml.com/en/timing-diagram)
-
-Non-UML Diagrams:
-
-* [Wireframe GUI]()
-* [Archimate diagram]()
-* [SDL - Specification and Description Language]()
-* [Ditaa diagram]()
-* [Gantt diagram]()
-* [MindMap]()
-* [Work Breakdown Structure diagram]()
-* [Entity Relationship diagram]()
 
 ### Usage of plantUML within a Markdown document
 
@@ -336,10 +176,82 @@ end note
 
 <div style="page-break-after: always;" />
 
+### Available Diagrams
+
+UML Diagrams:
+
+* [Sequence diagram](https://plantuml.com/en/sequence-diagram)
+* [Usecase diagram]()
+* [Class diagram]()
+* [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
+* [Component diagram](https://plantuml.com/en/component-diagram)
+* [State diagram](https://plantuml.com/en/state-diagram)
+* [Object diagram](https://plantuml.com/en/object-diagram)
+* [Deployment diagram](https://plantuml.com/en/deployment-diagram)
+* [Timing diagram](https://plantuml.com/en/timing-diagram)
+
+Non-UML Diagrams:
+
+* [Wireframe GUI]()
+* [Archimate diagram]()
+* [SDL - Specification and Description Language]()
+* [Ditaa diagram]()
+* [Gantt diagram]()
+* [MindMap]()
+* [Work Breakdown Structure diagram]()
+* [Entity Relationship diagram]()
+
 ## UML Diagrams
 
 * The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use `skinparam style strictuml`.
 * To get a non-colored diagram `skinparam monochrome true` can be used.
+
+### Sequence Diagram
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title Sequence Diagram
+
+    class1 -> class2 : DoSomething()
+
+    legend
+        plantUML:
+            //class1 -> class2 : DoSomething()//
+    end legend
+@enduml
+
+### Usecase Diagram
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    left to right direction
+
+    title Use Case Diagram
+    
+    Actor --> (Use Case)
+    legend
+        plantUML:
+            //Actor --> (Use Case)//
+    end legend
+@enduml
 
 ### Class Diagram
 
@@ -349,13 +261,20 @@ See also:
 
 #### Class Notation
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
+    skinparam classFontName Consolas    
+    skinparam classAttributeFontName Consolas
     'hide empty members
     'left to right direction
-    skinparam style strictuml
 
     class ClassName
     {
@@ -386,13 +305,21 @@ See also:
 #### Association
 
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
+    skinparam classFontName Consolas    
+    skinparam classAttributeFontName Consolas
+    
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     class1 "1" -- "*" class2
 
@@ -407,17 +334,22 @@ See also:
 @enduml
 
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     Book "1..*" -- "1..*" Author: < wrote
     note right
-        Example for an association
+        **__Association: Example__**
         
         plantUML:
             //Book "1..*" -- "1..*" Author: < wrote//
@@ -425,13 +357,18 @@ See also:
 @enduml
 
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     class1 "1" -- "*" class2
     (class1, class2) .. "AssociationClass"
@@ -446,13 +383,18 @@ See also:
 
 #### Dependency
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     class1 ..> class2 : uses >
     
@@ -473,13 +415,18 @@ See also:
 
 #### Aggregation
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
     
     class1 --o class2 : < has
 
@@ -494,13 +441,18 @@ See also:
 
 #### Composition
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
     
     class1 --* class2 : < owns
 
@@ -517,13 +469,18 @@ See also:
 #### Inheritance
 
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     class1 <|-- class2
 
@@ -542,19 +499,25 @@ See also:
 
 #### Interface Realization (Interface Inheritance)
 @startuml
-    skinparam classFontName Consolas
-    skinparam classAttributeFontName Consolas
     skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    'skinparam DiagramBorderColor black
+    'skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
 
     hide empty members
     left to right direction
-    skinparam style strictuml
 
     interface interface1
     interface1 <|.. class2
 
     note right 
         **__Interface Realization__**
+            **__(Interface Inheritance)__**
             - "class2 implements interface1"
             - "class2 realizes interface1"
             - "class2 inherits from interface1"
@@ -574,13 +537,53 @@ See also:
 [plantUML: NEW Activity Diagram Syntax](http://plantuml.com/activity-diagram-beta)
 
 @startuml
-    'skinparam classFontName Consolas
-    'skinparam classAttributeFontName Consolas
+    skinparam legendFontName Consolas
     skinparam noteFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title Activity Diagram
+
+    start
+    :step 1;
+    if (Check) then (success)
+        :step 2a;
+    else (fail)
+        :step 2b;
+    endif
+    stop
+
+    legend
+        plantUML:
+            //start//
+            //:step 1;//
+            //if (Check) then (success)//
+                //:step 2a;//
+            //else (fail)//
+                //:step 2b;//
+            //endif//
+            //stop//
+    end legend
+@enduml
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    'skinparam style strictuml
+    'skinparam monochrome true
 
     'hide empty members
     'left to right direction
-    'skinparam style strictuml
 
     start
     note right
@@ -650,9 +653,11 @@ See also:
 
 <div style="page-break-after: always;" />
 
-#### Connector & Detach
 
 @startuml
+
+title Connector & Detach
+
 start
 :Step01;
 (A)
@@ -664,9 +669,10 @@ note right: Connector
 stop
 @enduml
 
-#### Grouping (partitions)
-
 @startuml
+
+title Grouping (partitions)
+
 start
 partition Group1{
     :Step01;
@@ -679,9 +685,10 @@ partition Group2{
 stop
 @enduml
 
-#### Detach
-
 @startuml
+
+title Fork
+
 :start;
 fork
     :foo1;
@@ -691,18 +698,205 @@ fork again
     detach
 endfork
 
-if (foo4) then
-    :foo5;
-    detach
-endif
-
-:foo6;
-
-detach
-:foo7;
 stop
 
 @enduml
+
+### Component Diagram
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    'skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title Component Diagram
+
+    interface "Interface1 \n(provided \n interface)" as Interface1
+
+    interface "Interface2 \n(Used\nInterface)" as Interface2
+
+    Interface1 - [Component] : provide
+    [Component] ..> Interface2 : use
+    
+    [Component]
+    legend
+        plantUML:
+            //interface Interface1//
+            //interface Interface2//
+            //[Component]//
+
+            //Interface1 - [Component] : provide//
+            //[Component] ..> Interface2 : use//
+    end legend
+@enduml
+
+### State Diagram
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    'skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title State Diagram
+
+    [*] -> State1
+
+    State1: **entry** action
+    State1: **do** action
+    State1: **exit** action
+
+    State1 -> State2
+    State2 -> State1
+    State2 -> [*]
+
+    legend
+        plantUML:
+            [*] -> State1
+            State1 -> State2
+            State2 -> State1
+            State2 -> [*]
+
+            State1: **entry** action
+            State1: **do** action
+            State1: **exit** action
+    end legend
+@enduml
+
+### Object Diagram
+
+@startuml
+    skinparam legendFontName Consolas
+    skinparam noteFontName Consolas
+    'skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    title Object Diagram
+
+    hide empty members
+
+    object __Object__ {
+        field1 = 5
+        field2 = "abc"
+    }
+
+    class Class1
+
+    legend
+        plantUML:
+            //object __Object__ {//
+                //field1 = 5//
+                //field2 = "abc"//
+            //}//
+
+            //class Class1//
+    end legend
+@enduml
+
+### Deployment Diagram
+
+<div style="page-break-after: always;" />
+### Timing Diagram
+
+@startuml
+    skinparam noteFontName Consolas
+    skinparam legendFontName Consolas
+    'skinparam noteBackgroundColor white
+    skinparam legendBackgroundColor white
+    skinparam legendBorderColor white
+    skinparam DiagramBorderColor black
+    skinparam DiagramBorderThickness 2
+    skinparam style strictuml
+    'skinparam monochrome true
+
+    'skinparam LegendFontSize 12
+
+    title Timing Diagram
+
+    clock clk with period 1
+
+    binary "Binary" as B
+    @0
+    B is low
+    @1
+    B is high
+    @2
+    B is low
+
+    robust "Robust" as R
+    @0
+    R is state1
+    @1
+    R is state2
+    @2
+    R is state3
+    @3
+    R is state1
+
+    concise "Concise" as C
+    @0
+    C is state1
+    @1
+    C is state2
+    @2
+    C is state3
+
+    @1
+    R -> B@2 : message1
+
+    legend
+        plantUML:
+            //clock clk with period 1//
+
+            //binary "Binary" as B//
+            //@0//
+            //B is low//
+            //@1//
+            //B is high//
+            //@2//
+            //B is low//
+
+            //robust "Robust" as R//
+            //@0//
+            //R is state1//
+            //@1//
+            //R is state2//
+            //@2//
+            //R is state3//
+            //@3//
+            //R is state1//
+
+            //concise "Concise" as C//
+            //@0//
+            //C is state1//
+            //@1//
+            //C is state2//
+            //@2//
+            //C is state3//
+
+            //@1//
+            //R -> B@2 : message1//
+    end legend
+  
+@enduml
+
+<div style="page-break-after: always;" />
 
 ### plantUML formatting / styles
 
