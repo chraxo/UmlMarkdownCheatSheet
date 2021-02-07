@@ -11,16 +11,22 @@
 
 - [UML & Markdown Summary](#uml--markdown-summary)
   - [Table of Contents](#table-of-contents)
-  - [Links & Sources](#links--sources)
   - [Markdown Syntax](#markdown-syntax)
-      - [Page break](#page-break)
+    - [Tables](#tables)
+    - [Enumeration (Ordered List)](#enumeration-ordered-list)
+    - [List (Unordered List)](#list-unordered-list)
+    - [ToDo List](#todo-list)
+    - [Quote Block](#quote-block)
+    - [Code Block](#code-block)
+    - [Page break](#page-break)
+  - [UML Diagrams in Markdown: plantUML](#uml-diagrams-in-markdown-plantuml)
   - [plantUML Introduction](#plantuml-introduction)
     - [Usage of plantUML within a Markdown document](#usage-of-plantuml-within-a-markdown-document)
     - [Basic Syntax](#basic-syntax)
     - [Available Diagrams](#available-diagrams)
   - [UML Diagrams](#uml-diagrams)
     - [Sequence Diagram](#sequence-diagram)
-    - [Usecase Diagram](#usecase-diagram)
+    - [Use Case Diagram](#use-case-diagram)
     - [Class Diagram](#class-diagram)
       - [Class Notation](#class-notation)
       - [Association](#association)
@@ -47,28 +53,145 @@
       - [Markdown compliant](#markdown-compliant)
       - [Symbols](#symbols)
 
+## Markdown Syntax
+
+Links:
+
+* [commonmark.org](https://commonmark.org/help/)
+* [markdownguide.org](https://www.markdownguide.org/basic-syntax/)
+
+| Topic            | Syntax                               | Result                 |
+|------------------|--------------------------------------|------------------------|
+| Heading          | `# Heading 1`                        | <h1>Heading 1</h1>     |
+| Heading          | `## Heading 2`                       | <h2>Heading 2</h2>     |
+| Heading          | `### Heading 3`                      | <h3>Heading 3</h3>     |
+| Heading          | `#### Heading 4`                     | <h4>Heading 4</h4>     |
+| Formatting       | `Normal Text`                        | Normal Text            |
+| Formatting       | `*Italic*`                           | *Italic*               |
+| Formatting       | `**Bold**`                           | **Bold**               |
+| Formatting       | `***Italic Bold***`                  | ***Italic Bold***      |
+| Inline-Code      | ``` `int i;` ```                     | `int i;`               |
+| Escape-Character | `\..` - *example:* `\<`              | **\<**                 |
+| Images           | `![Text](www.xyz.com/i.jpg)`         | \<Image\>              |
+| Images           | `![Text](www.xyz.com/i.jpg "Title")` | \<Image\>              |
+| (Text) Links     | `[Text](www.xyz.com)`                | \<Link\>               |
+| Image Links      | `[![Text](abc.jpg)](www.xyz.com)`    | \<Image-Link\>         |
+| Math             | `$$ \int _a^b x^2 dx $$`             | $$ \int _a^b x^2 dx $$ |
+| Comment          | `<!-- A comment -->`                 |                        |
+
 <div style="page-break-after: always;" />
 
-## Links & Sources
+### Tables
+
+```
+| Column 1 | Column 2 | Right Aligned |
+|----------|----------|--------------:|
+| Cell     | Cell     |          Cell |
+| Cell     | Cvell     |          Cell |
+```
+
+| Column 1 | Column 2 | Right Aligned | Center Aligned |
+|----------|----------|--------------:|:--------------:|
+| Cell     | Cell     |          Cell |      Cell      |
+| Cell     | Cell     |          Cell |      Cell      |
+
+Hint 1: Multiple lines per cell are currently not possible.
+
+Hint 2: In *Visual Studio Code* with the plugin *Markdown Table Formatter* the keyboard shortcut Ctrl+Alt+F reformats the table to have nicely aligned columns.
+
+### Enumeration (Ordered List)
+
+```
+1. One
+2. Two
+   1. Three
+   2. Four
+```
+
+1. One
+2. Two
+   1. Three
+   2. Four
+
+### List (Unordered List)
+
+```
+* Item 1
+* Item 2
+    * Item 3    
+      Second line of item 3
+```
+
+* Item 1
+* Item 2
+    * Item 3    
+      Second line of item 3
+
+### ToDo List
+
+```
+* [ ] Item 1
+* [x] Item 2
+  * [x] Item 3
+```
+
+* [ ] Item 1
+* [x] Item 2
+  * [x] Item 3
+
+### Quote Block
+
+```
+> This is a block quote ..
+>
+> ..  with a second paragraph ..
+> 
+>> .. and a nested quote.
+```
+
+> This is a block quote ..
+>
+> ..  with a second paragraph ..
+> 
+>> .. and a nested quote.
+
+### Code Block
+
+    ```java
+    int i;
+    ```
+
+```java
+int i;
+```
+
+Language specification is optional and activates syntax highlighting.
+
+### Page break
+
+```
+<div style="page-break-after: always;" />
+```
+
+Creates a page break in pdf or other page based output.
+
+<div style="page-break-after: always;" />
+
+## UML Diagrams in Markdown: plantUML
+
+Links UML Diagrams:
 
 * [UML Diagrams: Wikipedia](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams)
 * [UML Diagrams: uml-diagrams.org](https://www.uml-diagrams.org/class-diagrams-overview.html)
 * [UML Basic Notations: tutorialspoint.com](https://www.tutorialspoint.com/uml/uml_basic_notations.htm)
 * [UML Quick Reference: nomagic.com](https://www.nomagic.com/support/quick-reference-guides)
 * [UML Notation Overview (German): oose.de](https://www.oose.de/wp-content/uploads/2012/05/UML-Notations%C3%BCbersicht-2.5.pdf)
-* [Markdown Syntax: commonmark.org](https://commonmark.org/help/)
+
+Links plantUML:
+
 * [plantUML.com](https://plantuml.com/en/)
 * [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
 * [Hyperlinks in plantUML](https://plantuml.com/de/link))
-
-## Markdown Syntax
-
-Special:
-
-#### Page break
-```
-<div style="page-break-after: always;" />
-```
 
 ## plantUML Introduction
 
@@ -111,7 +234,7 @@ Class1 <|-- Class2 : Inheritance
     note left
         This is **bold**
         This is //italic//
-        This is ""monospaced""
+        This is ""mono spaced""
         This is --stroked--
         This is __underlined__
     end note
@@ -129,7 +252,7 @@ title This is a diagram title
 note left
         This is **bold**
         This is //italic//
-        This is ""monospaced""
+        This is ""mono spaced""
         This is --stroked--
         This is __underlined__
 end note
@@ -181,7 +304,7 @@ end note
 UML Diagrams:
 
 * [Sequence diagram](https://plantuml.com/en/sequence-diagram)
-* [Usecase diagram]()
+* [Use Case diagram]()
 * [Class diagram]()
 * [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
 * [Component diagram](https://plantuml.com/en/component-diagram)
@@ -229,7 +352,7 @@ Non-UML Diagrams:
     end legend
 @enduml
 
-### Usecase Diagram
+### Use Case Diagram
 
 @startuml
     skinparam legendFontName Consolas
@@ -240,7 +363,7 @@ Non-UML Diagrams:
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
-    'skinparam monochrome true
+    ' skinparam monochrome true
 
     left to right direction
 
@@ -399,7 +522,7 @@ See also:
     class1 ..> class2 : uses >
     
     note bottom of class1
-        Dependend
+        Dependent
     end note
 
     note bottom of class2
@@ -924,7 +1047,7 @@ stop
 
 ### UML compliant appearance
 
-The default style of plantUML does not completely match the official UML definition. To change the style to comply as far as possible with the official UML defintion, set the `strictuml` style.
+The default style of plantUML does not completely match the official UML definition. To change the style to comply as far as possible with the official UML definition, set the `strictuml` style.
 
 @startuml
     class Class1
@@ -980,7 +1103,7 @@ Together{
 * Root node
 '* A second root node is not allowed
 ** Node
-*** Subsubnode
+*** Sub-sub-node
 **_ Node without box
 
 left side
@@ -995,8 +1118,8 @@ left side
 + Root Node
 ++ Alternative notation with ++
 -- '--' Chooses the left side
----_ Subnode
----_ Subnode
+---_ Sub-node
+---_ Sub-node
 -- <s>Strike through</s>
 @endmindmap
 
