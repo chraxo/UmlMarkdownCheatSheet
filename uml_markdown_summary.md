@@ -20,10 +20,8 @@
     - [Code Block](#code-block)
     - [Page break](#page-break)
   - [UML Diagrams in Markdown: plantUML](#uml-diagrams-in-markdown-plantuml)
-  - [plantUML Introduction](#plantuml-introduction)
-    - [Usage of plantUML within a Markdown document](#usage-of-plantuml-within-a-markdown-document)
-    - [Basic Syntax](#basic-syntax)
-    - [Available Diagrams](#available-diagrams)
+    - [plantUML within a Markdown document](#plantuml-within-a-markdown-document)
+    - [plantUML Basic Syntax](#plantuml-basic-syntax)
   - [UML Diagrams](#uml-diagrams)
     - [Sequence Diagram](#sequence-diagram)
     - [Use Case Diagram](#use-case-diagram)
@@ -193,9 +191,34 @@ Links plantUML:
 * [plantUML Reference Guide: deepu.js.org](https://deepu.js.org/svg-seq-diagram/Reference_Guide.pdf)
 * [Hyperlinks in plantUML](https://plantuml.com/de/link))
 
-## plantUML Introduction
+<!--
+### plantUML: Available Diagrams
 
-### Usage of plantUML within a Markdown document
+UML Diagrams:
+
+* [Sequence diagram](https://plantuml.com/en/sequence-diagram)
+* [Use Case diagram]()
+* [Class diagram]()
+* [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
+* [Component diagram](https://plantuml.com/en/component-diagram)
+* [State diagram](https://plantuml.com/en/state-diagram)
+* [Object diagram](https://plantuml.com/en/object-diagram)
+* [Deployment diagram](https://plantuml.com/en/deployment-diagram)
+* [Timing diagram](https://plantuml.com/en/timing-diagram)
+
+Non-UML Diagrams:
+
+* [Wireframe GUI]()
+* [Archimate diagram]()
+* [SDL - Specification and Description Language]()
+* [Ditaa diagram]()
+* [Gantt diagram]()
+* [MindMap]()
+* [Work Breakdown Structure diagram]()
+* [Entity Relationship diagram]()
+-->
+
+### plantUML within a Markdown document
 
 Within a markdown document a plantUML section is marked with the tags `@startuml` and `@enduml`.
 
@@ -215,7 +238,7 @@ Class1 <|-- Class2 : Inheritance
 
 <div style="page-break-after: always;" />
 
-### Basic Syntax
+### plantUML Basic Syntax
 
 * See also [https://plantuml.com/de/creole](https://plantuml.com/de/creole)
 
@@ -283,15 +306,12 @@ end note
 note left
     note at the left side
 end note
-
 note right
     note at the right side
 end note
-
 note bottom
     note at the bottom
 end note
-
 note top
     note at the top
 end note
@@ -299,32 +319,9 @@ end note
 
 <div style="page-break-after: always;" />
 
-### Available Diagrams
-
-UML Diagrams:
-
-* [Sequence diagram](https://plantuml.com/en/sequence-diagram)
-* [Use Case diagram]()
-* [Class diagram]()
-* [Activity diagram](https://plantuml.com/en/activity-diagram-beta)
-* [Component diagram](https://plantuml.com/en/component-diagram)
-* [State diagram](https://plantuml.com/en/state-diagram)
-* [Object diagram](https://plantuml.com/en/object-diagram)
-* [Deployment diagram](https://plantuml.com/en/deployment-diagram)
-* [Timing diagram](https://plantuml.com/en/timing-diagram)
-
-Non-UML Diagrams:
-
-* [Wireframe GUI]()
-* [Archimate diagram]()
-* [SDL - Specification and Description Language]()
-* [Ditaa diagram]()
-* [Gantt diagram]()
-* [MindMap]()
-* [Work Breakdown Structure diagram]()
-* [Entity Relationship diagram]()
-
 ## UML Diagrams
+
+Hints:
 
 * The standard plantUML style does not perfectly comply with the UML standard. To be more compliant use `skinparam style strictuml`.
 * To get a non-colored diagram `skinparam monochrome true` can be used.
@@ -342,7 +339,7 @@ Non-UML Diagrams:
     skinparam style strictuml
     'skinparam monochrome true
 
-    title Sequence Diagram
+    ' title Sequence Diagram
 
     class1 -> class2 : DoSomething()
 
@@ -367,7 +364,7 @@ Non-UML Diagrams:
 
     left to right direction
 
-    title Use Case Diagram
+    ' title Use Case Diagram
     
     Actor --> (Use Case)
     legend
@@ -376,6 +373,8 @@ Non-UML Diagrams:
     end legend
 @enduml
 
+<div style="page-break-after: always;" />
+
 ### Class Diagram
 
 See also:
@@ -383,6 +382,7 @@ See also:
 * [Class Diagram: plantuml.com](https://plantuml.com/en/class-diagram)
 
 #### Class Notation
+
 @startuml
     skinparam noteFontName Consolas
     skinparam legendFontName Consolas
@@ -413,14 +413,14 @@ See also:
 
     note right
         plantUML:
-           class ClassName
-           {
-               field1 : Type = DefaultValue
-               -private_field    : Type
-               #protected_field  : Int32
-               ~internalMethod() : ReturnType
-               +publicMethod()    : string
-           }
+           //class ClassName//
+           //{//
+               //field1 : Type = DefaultValue//
+               //-private_field    : Type//
+               //#protected_field  : Int32//
+               //~internalMethod() : ReturnType//
+               //+publicMethod()    : string//
+           //}//
     end note
 
 @enduml
@@ -505,6 +505,7 @@ See also:
 @enduml
 
 #### Dependency
+
 @startuml
     skinparam noteFontName Consolas
     skinparam legendFontName Consolas
@@ -537,6 +538,7 @@ See also:
 @enduml
 
 #### Aggregation
+
 @startuml
     skinparam noteFontName Consolas
     skinparam legendFontName Consolas
@@ -563,6 +565,7 @@ See also:
 @enduml
 
 #### Composition
+
 @startuml
     skinparam noteFontName Consolas
     skinparam legendFontName Consolas
@@ -621,6 +624,7 @@ See also:
 @enduml
 
 #### Interface Realization (Interface Inheritance)
+
 @startuml
     skinparam noteFontName Consolas
     skinparam legendFontName Consolas
@@ -659,6 +663,7 @@ See also:
 
 [plantUML: NEW Activity Diagram Syntax](http://plantuml.com/activity-diagram-beta)
 
+<!--
 @startuml
     skinparam legendFontName Consolas
     skinparam noteFontName Consolas
@@ -693,6 +698,7 @@ See also:
             //stop//
     end legend
 @enduml
+-->
 
 @startuml
     skinparam legendFontName Consolas
@@ -775,7 +781,6 @@ See also:
 @enduml
 
 <div style="page-break-after: always;" />
-
 
 @startuml
 
@@ -935,6 +940,7 @@ stop
 ### Deployment Diagram
 
 <div style="page-break-after: always;" />
+
 ### Timing Diagram
 
 @startuml
