@@ -82,10 +82,10 @@ Links:
 ### Tables
 
 ```
-| Column 1 | Column 2 | Right Aligned |
-|----------|----------|--------------:|
-| Cell     | Cell     |          Cell |
-| Cell     | Cvell     |          Cell |
+| Column 1 | Column 2 | Right Aligned | Center Aligned |
+|----------|----------|--------------:|:--------------:|
+| Cell     | Cell     |          Cell |      Cell      |
+| Cell     | Cell     |          Cell |      Cell      |
 ```
 
 | Column 1 | Column 2 | Right Aligned | Center Aligned |
