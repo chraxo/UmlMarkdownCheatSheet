@@ -282,6 +282,9 @@ end note
 ```
 
 @startuml
+    skinparam legendFontName Consolas
+    skinparam legendBackgroundColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
 
@@ -300,22 +303,23 @@ end note
     note top
         note at the top
     end note
-@enduml
 
-```{.md}
-note left
-    note at the left side
-end note
-note right
-    note at the right side
-end note
-note bottom
-    note at the bottom
-end note
-note top
-    note at the top
-end note
-```
+legend
+plantUML:
+    //note left//
+        //note at the left side//
+    //end note//
+    //note right//
+        //note at the right side//
+    //end note//
+    //note bottom//
+        //note at the bottom//
+    //end note//
+    //note top//
+        //note at the top//
+    //end note//
+end legend
+@enduml
 
 <div style="page-break-after: always;" />
 
