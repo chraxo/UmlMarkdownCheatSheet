@@ -243,11 +243,13 @@ Class1 <|-- Class2 : Inheritance
 * See also [https://plantuml.com/de/creole](https://plantuml.com/de/creole)
 
 @startuml
+    skinparam legendFontName Consolas
+    skinparam legendBackgroundColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
 
     title This is a diagram title
-
     ' This is a (one line) comment. This line will be ignored by plantUML.
 
     /' This is ...
@@ -337,7 +339,7 @@ Hints:
     skinparam noteFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -360,7 +362,7 @@ Hints:
     skinparam noteFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -392,7 +394,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -436,7 +438,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -465,7 +467,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -488,7 +490,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -515,7 +517,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -548,7 +550,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -575,7 +577,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -603,7 +605,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -622,7 +624,7 @@ See also:
         plantUML: 
            //class1 <|-- class2//
         or:
-           //class class2 extends class1//
+           //class class2 **extends** class1//
     end note
     
 @enduml
@@ -634,7 +636,7 @@ See also:
     skinparam legendFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     'skinparam DiagramBorderColor black
     'skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -657,7 +659,7 @@ See also:
            //interface interface1//
            //interface1 <|.. class2//
         or:
-           //class class1 implements interface1//
+           //class class1 **implements** interface1//
     end note
 @enduml
 
@@ -673,7 +675,7 @@ See also:
     skinparam noteFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -709,7 +711,7 @@ See also:
     skinparam noteFontName Consolas
     skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     'skinparam style strictuml
@@ -841,7 +843,7 @@ stop
     skinparam noteFontName Consolas
     'skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -875,7 +877,7 @@ stop
     skinparam noteFontName Consolas
     'skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -915,7 +917,7 @@ The option `hide empty description` hides the state description if empty.
     skinparam noteFontName Consolas
     'skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
@@ -954,7 +956,7 @@ The option `hide empty description` hides the state description if empty.
     skinparam legendFontName Consolas
     'skinparam noteBackgroundColor white
     skinparam legendBackgroundColor white
-    skinparam legendBorderColor white
+    ' skinparam legendBorderColor white
     skinparam DiagramBorderColor black
     skinparam DiagramBorderThickness 2
     skinparam style strictuml
