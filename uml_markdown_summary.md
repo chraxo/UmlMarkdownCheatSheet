@@ -906,6 +906,8 @@ stop
     end legend
 @enduml
 
+The option `hide empty description` hides the state description if empty.
+
 ### Object Diagram
 
 @startuml
